@@ -4,11 +4,9 @@ import type { BlockV6 } from "@typebot.io/blocks-core/schemas/schema";
 import { InputBlockType } from "@typebot.io/blocks-inputs/constants";
 import { IntegrationBlockType } from "@typebot.io/blocks-integrations/constants";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
-import { env } from "@typebot.io/env";
 import { EventType } from "@typebot.io/events/constants";
 import type { TDraggableEvent } from "@typebot.io/events/schemas";
 import { forgedBlocks } from "@typebot.io/forge-repository/definitions";
-import { isDefined } from "@typebot.io/lib/utils";
 import { Input } from "@typebot.io/ui/components/Input";
 import { Tooltip } from "@typebot.io/ui/components/Tooltip";
 import { SquareLock01Icon } from "@typebot.io/ui/icons/SquareLock01Icon";
@@ -160,14 +158,10 @@ export const BlocksSideBar = () => {
     },
   );
 
-  const filteredLogicBlockTypes = Object.values(LogicBlockType).filter(
-    (type) =>
-      type === LogicBlockType.WEBHOOK
-        ? isDefined(env.NEXT_PUBLIC_PARTYKIT_HOST)
-        : true &&
-          getLogicBlockLabel(t)
-            [type].toLowerCase()
-            .includes(searchInput.toLowerCase()),
+  const filteredLogicBlockTypes = Object.values(LogicBlockType).filter((type) =>
+    getLogicBlockLabel(t)
+      [type].toLowerCase()
+      .includes(searchInput.toLowerCase()),
   );
 
   const filteredEventBlockTypes = Object.values(EventType).filter((type) =>

@@ -350,13 +350,9 @@ In Typebot, Redis is optional and is used to:
 | --------- | ------- | -------------------------------------------------------------------- |
 | REDIS_URL |         | The database URL. i.e. `redis://<username>:<password>@<host>:<port>` |
 
-## PartyKit
+## Webhook block
 
-PartyKit is optional and is used to make the webhook block work. The PartyKit configuration is located in `packages/partykit` folder. You can deploy the server into production using `bun deploy`. You can find more information about PartyKit deployment in their [official documentation](https://docs.partykit.io/guides/deploying-your-partykit-server/).
-
-| Parameter                 | Default | Description                               |
-| ------------------------- | ------- | ----------------------------------------- |
-| NEXT_PUBLIC_PARTYKIT_HOST |         | PartyKit host. i.e. `partykit.typebot.io` |
+The webhook logic block uses long-polling on the **viewer** (`GET /api/v1/webhook-wait/{room}`) while the chat waits for an incoming webhook. The `POST .../executeWebhook` endpoints on the same viewer process resolve that wait. For a single-instance deployment this works without extra services; if you scale the viewer to multiple replicas, webhook delivery must hit the same instance that is holding the open wait (for example with sticky sessions).
 
 ## Others
 

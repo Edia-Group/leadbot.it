@@ -1,13 +1,12 @@
 import { ORPCError } from "@orpc/server";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
-import { env } from "@typebot.io/env";
 import { parseGroups } from "@typebot.io/groups/helpers/parseGroups";
 import { byId } from "@typebot.io/lib/utils";
+import { notifyWebhookPayload } from "@typebot.io/lib/webhookRelay";
 import prisma from "@typebot.io/prisma";
 import type { Prisma } from "@typebot.io/prisma/types";
 import { isTypebotVersionAtLeastV6 } from "@typebot.io/schemas/helpers/isTypebotVersionAtLeastV6";
 import { isReadTypebotForbidden } from "@typebot.io/typebot/helpers/isReadTypebotForbidden";
-import PartySocket from "partysocket";
 import { z } from "zod";
 
 export const executeTestWebhookInputSchema = z.object({
@@ -32,11 +31,6 @@ export const handleExecuteTestWebhook = async ({
   input: z.infer<typeof executeTestWebhookInputSchema>;
   context: Context;
 }) => {
-  if (!env.NEXT_PUBLIC_PARTYKIT_HOST)
-    throw new ORPCError("NOT_FOUND", {
-      message: "PartyKit not configured",
-    });
-
   const typebot = await prisma.typebot.findUnique({
     where: { id: typebotId },
     select: {
@@ -82,23 +76,16 @@ export const handleExecuteTestWebhook = async ({
       message: "Webhook block not found",
     });
 
-  try {
-    await PartySocket.fetch(
-      {
-        host: env.NEXT_PUBLIC_PARTYKIT_HOST,
-        room: `${user.id}/${typebotId}/webhooks`,
-      },
-      {
-        method: "POST",
-        body: parseBody(body),
-      },
-    );
-  } catch (error) {
-    console.error("PartySocket.fetch error:", error);
-    throw new ORPCError("INTERNAL_SERVER_ERROR", {
-      message: "PartySocket.fetch error",
+  const payload = parseBody(body);
+  const delivered = notifyWebhookPayload(
+    `${user.id}/${typebotId}/webhooks`,
+    payload ?? "",
+  );
+  if (!delivered)
+    throw new ORPCError("NOT_FOUND", {
+      message:
+        "No test listener is active. Open the webhook block settings and click “Listen for test event” first.",
     });
-  }
 
   return { message: "OK" };
 };

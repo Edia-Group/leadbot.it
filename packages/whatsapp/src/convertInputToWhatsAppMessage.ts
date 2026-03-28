@@ -12,6 +12,13 @@ import type { SystemMessages } from "@typebot.io/settings/schemas";
 import { getOrUploadMedia, type UploadMediaCache } from "./getOrUploadMedia";
 import type { WhatsAppSendingMessage } from "./schemas";
 
+const whatsAppInteractiveGroupSize = () => {
+  const size = env.WHATSAPP_INTERACTIVE_GROUP_SIZE;
+  return typeof size === "number" && Number.isFinite(size) && size > 0
+    ? size
+    : 3;
+};
+
 type Props = {
   input: NonNullable<ContinueChatResponse["input"]>;
   lastMessage: ContinueChatResponse["messages"][number] | undefined;
@@ -164,7 +171,7 @@ export const convertInputToWhatsAppMessages = async ({
         ];
       const items = groupArrayByArraySize(
         input.items.filter((item) => isDefined(item.content)),
-        env.WHATSAPP_INTERACTIVE_GROUP_SIZE,
+        whatsAppInteractiveGroupSize(),
       ) as ButtonItem[][];
       return items.map((items, idx) => ({
         type: "interactive",

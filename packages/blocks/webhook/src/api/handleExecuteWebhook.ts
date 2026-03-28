@@ -1,15 +1,14 @@
 import { ORPCError } from "@orpc/server";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
 import { getSession } from "@typebot.io/chat-session/queries/getSession";
-import { env } from "@typebot.io/env";
 import { parseGroups } from "@typebot.io/groups/helpers/parseGroups";
 import { byId } from "@typebot.io/lib/utils";
+import { notifyWebhookPayload } from "@typebot.io/lib/webhookRelay";
 import prisma from "@typebot.io/prisma";
 import type { Prisma } from "@typebot.io/prisma/types";
 import { isTypebotVersionAtLeastV6 } from "@typebot.io/schemas/helpers/isTypebotVersionAtLeastV6";
 import { isReadTypebotForbidden } from "@typebot.io/typebot/helpers/isReadTypebotForbidden";
 import { resumeWhatsAppFlow } from "@typebot.io/whatsapp/resumeWhatsAppFlow";
-import PartySocket from "partysocket";
 import { z } from "zod";
 
 export const executeWebhookInputSchema = z.object({
@@ -35,11 +34,6 @@ export const handleExecuteWebhook = async ({
   input: z.infer<typeof executeWebhookInputSchema>;
   context: Context;
 }) => {
-  if (!env.NEXT_PUBLIC_PARTYKIT_HOST)
-    throw new ORPCError("NOT_FOUND", {
-      message: "PartyKit not configured",
-    });
-
   const typebot = await prisma.typebot.findUnique({
     where: { id: typebotId },
     select: {
@@ -137,20 +131,13 @@ export const handleExecuteWebhook = async ({
     return { message: "OK" };
   }
 
-  try {
-    await PartySocket.fetch(
-      { host: env.NEXT_PUBLIC_PARTYKIT_HOST, room: `${resultId}/webhooks` },
-      {
-        method: "POST",
-        body: parseBody(body),
-      },
-    );
-  } catch (error) {
-    console.error("PartySocket.fetch error:", error);
-    throw new ORPCError("INTERNAL_SERVER_ERROR", {
-      message: "PartySocket.fetch error",
+  const payload = parseBody(body);
+  const delivered = notifyWebhookPayload(`${resultId}/webhooks`, payload ?? "");
+  if (!delivered)
+    throw new ORPCError("NOT_FOUND", {
+      message:
+        "No active chat session is waiting for this webhook (ensure the bot is paused on the webhook block and the viewer process that serves the chat is the same one receiving this request).",
     });
-  }
 
   return { message: "OK" };
 };

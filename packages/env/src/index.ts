@@ -451,22 +451,6 @@ const keycloakEnv = {
   },
 };
 
-const partykitEnv = {
-  client: {
-    NEXT_PUBLIC_PARTYKIT_HOST: z.string().min(1).optional(),
-  },
-  runtimeEnv: {
-    NEXT_PUBLIC_PARTYKIT_HOST: getRuntimeVariable("NEXT_PUBLIC_PARTYKIT_HOST"),
-  },
-};
-
-const inngestEnv = {
-  server: {
-    INNGEST_EVENT_KEY: z.string().min(1).optional(),
-    INNGEST_SIGNING_KEY: z.string().min(1).optional(),
-  },
-};
-
 const otelEnv = {
   server: {
     OTEL_EXPORTER_OTLP_ENDPOINT: z.string().url().optional(),
@@ -512,7 +496,6 @@ export const env = createEnv({
     ...telemetryEnv.server,
     ...keycloakEnv.server,
     ...posthogEnv.server,
-    ...inngestEnv.server,
     ...otelEnv.server,
   },
   client: {
@@ -527,7 +510,6 @@ export const env = createEnv({
     ...pexelsEnv.client,
     ...posthogEnv.client,
     ...tolgeeEnv.client,
-    ...partykitEnv.client,
   },
   experimental__runtimeEnv: {
     ...baseEnv.runtimeEnv,
@@ -541,7 +523,6 @@ export const env = createEnv({
     ...pexelsEnv.runtimeEnv,
     ...posthogEnv.runtimeEnv,
     ...tolgeeEnv.runtimeEnv,
-    ...partykitEnv.runtimeEnv,
   },
   skipValidation:
     process.env.SKIP_ENV_CHECK === "true" ||

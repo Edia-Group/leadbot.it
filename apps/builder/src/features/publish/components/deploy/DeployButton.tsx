@@ -26,7 +26,6 @@ import { ShopifyDeployDialog } from "./dialogs/shopify/ShopifyDeployDialog";
 import { WebflowDeployDialog } from "./dialogs/webflow/WebflowDeployDialog";
 import { WhatsAppDeployDialog } from "./dialogs/whatsApp/WhatsAppDeployDialog";
 import { WixDeployDialog } from "./dialogs/wix/WixDeployDialog";
-import { WordpressDeployDialog } from "./dialogs/wordpress/WordpressDeployDialog";
 import { BlinkLogo } from "./logos/BlinkLogo";
 import { FlutterFlowLogo } from "./logos/FlutterFlowLogo";
 import { FramerLogo } from "./logos/FramerLogo";
@@ -39,8 +38,6 @@ import { ReactLogo } from "./logos/ReactLogo";
 import { ShopifyLogo } from "./logos/ShopifyLogo";
 import { WebflowLogo } from "./logos/WebflowLogo";
 import { WixLogo } from "./logos/WixLogo";
-import { WordpressLogo } from "./logos/WordpressLogo";
-
 export type DialogProps = {
   publicId: string;
   isPublished: boolean;
@@ -114,20 +111,6 @@ export const IntegrationButtons = ({
         lockTagPlan={hasProPerks(workspace) ? undefined : "PRO"}
         dialog={({ onClose, isOpen }) => (
           <WhatsAppDeployDialog
-            isOpen={isOpen}
-            onClose={onClose}
-            publicId={publicId}
-            isPublished={isPublished}
-          />
-        )}
-        publicId={publicId}
-        isPublished={isPublished}
-      />
-      <DeployButton
-        logo={<WordpressLogo className="w-[70px] h-[100px]" />}
-        label="Wordpress"
-        dialog={({ onClose, isOpen }) => (
-          <WordpressDeployDialog
             isOpen={isOpen}
             onClose={onClose}
             publicId={publicId}

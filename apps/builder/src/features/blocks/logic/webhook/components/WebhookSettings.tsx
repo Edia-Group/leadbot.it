@@ -8,8 +8,7 @@ import { Badge } from "@typebot.io/ui/components/Badge";
 import { Button } from "@typebot.io/ui/components/Button";
 import { Field } from "@typebot.io/ui/components/Field";
 import { Tabs } from "@typebot.io/ui/components/Tabs";
-import usePartySocket from "partysocket/react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { CodeEditor } from "@/components/inputs/CodeEditor";
 import { CopyInput } from "@/components/inputs/CopyInput";
 import { TableList, type TableListItemProps } from "@/components/TableList";
@@ -19,6 +18,8 @@ import { computeDeepKeysMappingSuggestionList } from "@/features/blocks/integrat
 import { useTypebot } from "@/features/editor/providers/TypebotProvider";
 import { useUser } from "@/features/user/hooks/useUser";
 import { toast } from "@/lib/toast";
+
+const webhookWaitMaxMs = 125_000;
 
 type Props = {
   blockId: string;
@@ -38,42 +39,61 @@ export const WebhookSettings = ({
     "closed",
   );
   const [responseKeys, setResponseKeys] = useState<string[]>();
+  const abortRef = useRef<AbortController | null>(null);
 
   const updateResponseVariableMapping = (
     responseVariableMapping: ResponseVariableMapping[],
   ) => onOptionsChange({ ...options, responseVariableMapping });
 
-  const ws = usePartySocket({
-    host: env.NEXT_PUBLIC_PARTYKIT_HOST,
-    room: `${user?.id}/${typebot?.id}/webhooks`,
-
-    async onMessage(e) {
+  const listenForTestEvent = async () => {
+    if (!typebot?.id || !user?.id) return;
+    await save();
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+    setReceivedData(undefined);
+    setResponseKeys(undefined);
+    setWebsocketStatus("opened");
+    const room = encodeURIComponent(`${user.id}/${typebot.id}/webhooks`);
+    const viewerBase = env.NEXT_PUBLIC_VIEWER_URL[0].replace(/\/$/, "");
+    const url = `${viewerBase}/api/v1/webhook-wait/${room}`;
+    try {
+      const timeoutId = window.setTimeout(
+        () => controller.abort(),
+        webhookWaitMaxMs,
+      );
+      const response = await fetch(url, { signal: controller.signal });
+      window.clearTimeout(timeoutId);
+      if (!response.ok) {
+        toast({
+          type: "error",
+          description: `Webhook wait failed: ${response.status} ${response.statusText}`,
+        });
+        return;
+      }
+      const data = (await response.json()) as { body?: string };
+      const raw = data.body ?? "";
+      if (raw.length === 0) {
+        setReceivedData(undefined);
+        return;
+      }
       try {
-        const parsedData = JSON.parse(e.data);
+        const parsedData = JSON.parse(raw);
         if (Object.keys(parsedData).length > 0) {
           setReceivedData(JSON.stringify(parsedData, null, 2));
           setResponseKeys(computeDeepKeysMappingSuggestionList(parsedData));
         }
-        setWebsocketStatus("closed");
-        ws.close();
-      } catch (err) {
-        toast(await parseUnknownError({ err }));
+      } catch {
+        setReceivedData(raw);
       }
-    },
-    async onError(e) {
-      console.error(e);
-      console.log((await parseUnknownError({ err: e })).details);
-      Sentry.captureException(e);
-    },
-    startClosed: true,
-  });
-
-  const listenForTestEvent = async () => {
-    await save();
-    ws.reconnect();
-    setReceivedData(undefined);
-    setResponseKeys(undefined);
-    setWebsocketStatus("opened");
+    } catch (err) {
+      if ((err as Error).name === "AbortError") return;
+      toast(await parseUnknownError({ err }));
+      Sentry.captureException(err);
+    } finally {
+      setWebsocketStatus("closed");
+      abortRef.current = null;
+    }
   };
 
   const ResponseMappingInputs = useMemo(
