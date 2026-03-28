@@ -1,7 +1,5 @@
-import type { LogInSession } from "@typebot.io/logs/schemas";
-import PartySocket from "partysocket";
 import type { ClientSideActionContext } from "@/types";
-import { getPartyKitHost } from "@/utils/getPartyKitHost";
+import { guessApiHost } from "@/utils/guessApiHost";
 
 type Props = {
   resultId?: string;
@@ -9,33 +7,50 @@ type Props = {
   context: ClientSideActionContext;
 };
 
-export const listenForWebhook = ({ sessionId, resultId, context }: Props) => {
-  const ws = new PartySocket({
-    host: getPartyKitHost(context.wsHost),
-    room: getRoomName({ sessionId, resultId }),
-  });
-  return new Promise<{
-    replyToSend: string | undefined;
-    logs?: LogInSession[];
-  }>((resolve) => {
-    ws.addEventListener("message", (event) => {
-      ws.close();
-      resolve({ replyToSend: event.data });
-    });
+const maxWaitMs = 125_000;
 
-    ws.addEventListener("error", (error) => {
-      resolve({
+export const listenForWebhook = async ({
+  sessionId,
+  resultId,
+  context,
+}: Props) => {
+  const apiBase = (
+    context.apiHost ?? guessApiHost({ ignoreChatApiUrl: false })
+  ).replace(/\/$/, "");
+  const room = encodeURIComponent(getRoomName({ sessionId, resultId }));
+  const url = `${apiBase}/api/v1/webhook-wait/${room}`;
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), maxWaitMs);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    window.clearTimeout(timeoutId);
+    if (!response.ok) {
+      return {
+        replyToSend: undefined,
         logs: [
           {
             status: "error",
-            description: "Websocket returned an error",
-            details: JSON.stringify(error, null, 2),
+            description: "Webhook wait request failed",
+            details: `${response.status} ${response.statusText}`,
           },
         ],
-        replyToSend: undefined,
-      });
-    });
-  });
+      };
+    }
+    const data = (await response.json()) as { body?: string };
+    return { replyToSend: data.body };
+  } catch (error) {
+    window.clearTimeout(timeoutId);
+    return {
+      replyToSend: undefined,
+      logs: [
+        {
+          status: "error",
+          description: "Webhook wait failed",
+          details: JSON.stringify(error, Object.getOwnPropertyNames(error), 2),
+        },
+      ],
+    };
+  }
 };
 
 const getRoomName = ({

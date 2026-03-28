@@ -13,7 +13,6 @@
     "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
-    "partysocket": "^1.0.2",
     "@planetscale/database": "^1.8.0",
     "@sentry/nextjs": "^10.32.1",
     "@orpc/server": "^1.13.4",

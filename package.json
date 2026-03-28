@@ -5,7 +5,8 @@
   "workspaces": [
     "packages/*",
     "packages/deprecated/*",
-    "packages/embeds/*",
+    "packages/embeds/js",
+    "packages/embeds/react",
     "packages/forge/*",
     "packages/forge/blocks/*",
     "packages/blocks/*",
@@ -26,7 +27,7 @@
     "check-types": "turbo run check-types",
     "build": "turbo run build --filter=@leadbot/builder... --filter=viewer... --filter=landing-page... --filter=docs...",
     "dev": "node scripts/dev.js",
-    "dev:default": "turbo dev --filter=@leadbot/builder... --filter=viewer... --filter=workflows... --concurrency=11",
+    "dev:default": "turbo dev --filter=@leadbot/builder... --filter=viewer... --concurrency=8",
     "dev:windows": "turbo dev --filter=@leadbot/builder --filter=viewer --filter=landing-page --concurrency=5",
     "test": "turbo run test",
     "sync-locales": "dotenv -e .env -- tolgee sync --continue-on-warning --remove-unused --no-strict-namespace --patterns './apps/builder/src/**/*.ts?(x)' --backup './.tolgee/backup'",
@@ -35,7 +36,6 @@
     "create-new-block": "cd packages/forge/cli && bun start",
     "check-unused-dependencies": "bun packages/scripts/src/checkDependencies.ts",
     "restore": "echo 'Cleaning...' && bunx rimraf --glob '**/{node_modules,dist,.next,.turbo}'",
-    "deploy-workflows": "fly deploy --config apps/workflows/fly.toml",
     "check": "turbo run check-types test format-and-lint:fix lint-repo check-broken-links"
   },
   "devDependencies": {
@@ -63,7 +63,6 @@
     "esbuild",
     "isolated-vm",
     "prisma",
-    "sharp",
-    "inngest-cli"
+    "sharp"
   ]
 }

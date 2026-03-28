@@ -1,7 +1,6 @@
 import { ORPCError } from "@orpc/server";
 import { LogicBlockType } from "@typebot.io/blocks-logic/constants";
 import { getSession } from "@typebot.io/chat-session/queries/getSession";
-import { env } from "@typebot.io/env";
 import { parseGroups } from "@typebot.io/groups/helpers/parseGroups";
 import { byId } from "@typebot.io/lib/utils";
 import prisma from "@typebot.io/prisma";
@@ -34,11 +33,6 @@ export const handleExecuteTestWebhookWhatsApp = async ({
   input: z.infer<typeof executeTestWebhookWhatsAppInputSchema>;
   context: Context;
 }) => {
-  if (!env.NEXT_PUBLIC_PARTYKIT_HOST)
-    throw new ORPCError("NOT_FOUND", {
-      message: "PartyKit not configured",
-    });
-
   const typebot = await prisma.typebot.findUnique({
     where: { id: typebotId },
     select: {

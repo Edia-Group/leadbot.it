@@ -7,7 +7,6 @@ This is a Turborepo monorepo with Bun package manager.
 - `apps/builder/` - Visual flow editor
 - `apps/viewer/` - Runtime that executes bots
 - `apps/landing-page/` - Commercial website landing page
-- `apps/workflows/` - Durable workflows server
 - `apps/docs/` - Documentation
 - `packages/` - All feature-driven modules, shared libs, schemas, UI package.
 

@@ -105,7 +105,7 @@ export const executeClientSideAction = async ({
     return executeCode(clientSideAction.codeToExecute);
   }
   if (clientSideAction.type === "listenForWebhook") {
-    return listenForWebhook({
+    return await listenForWebhook({
       sessionId: context.sessionId,
       resultId: context.resultId,
       context,

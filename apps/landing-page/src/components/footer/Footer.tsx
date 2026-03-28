@@ -1,6 +1,6 @@
 import { LeadBotLogoFull } from "@/components/LeadBotLogo";
 import { TextLink } from "@/components/link";
-import { docsUrl, githubRepoUrl, linkedInUrl } from "../../constants";
+import { docsUrl, linkedInUrl } from "../../constants";
 import gradientSeparatorSrc from "./assets/gradient-separator.png";
 
 const data = [

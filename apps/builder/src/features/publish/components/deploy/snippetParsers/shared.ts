@@ -31,8 +31,7 @@ export const parseBotProps = ({
     "apiHost",
     parseApiHostValue(customDomain),
   );
-  const wsHostLine = parseStringParam("wsHost", parseWsHost());
-  return `${typebotLine}${apiHostLine}${wsHostLine}`;
+  return `${typebotLine}${apiHostLine}`;
 };
 
 export const parseReactStringParam = (
@@ -54,8 +53,7 @@ export const parseReactBotProps = ({
     "apiHost",
     parseApiHost(customDomain),
   );
-  const wsHostLine = parseReactStringParam("wsHost", parseWsHost());
-  return `${typebotLine} ${apiHostLine} ${wsHostLine}`;
+  return `${typebotLine} ${apiHostLine}`;
 };
 
 export const typebotImportCode = `import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@${packageJson.version.split(".")[0]}/dist/web.js'`;
@@ -81,9 +79,4 @@ const parseApiHostValue = (
 ) => {
   if (isCloudProdInstance()) return;
   return parseApiHost(customDomain);
-};
-
-const parseWsHost = () => {
-  if (isCloudProdInstance()) return;
-  return env.NEXT_PUBLIC_PARTYKIT_HOST;
 };

@@ -61,10 +61,10 @@ export const RedisClientLayer = Layer.unwrapScoped(
     // If Redis is not configured, provide a no-op client
     if (Option.isNone(redisUrl)) {
       return Layer.succeed(RedisClient, {
-        get: (key: string) => Effect.succeed(null),
-        set: (key: string, value: string) => Effect.void,
-        publish: (channel: string, message: string) => Effect.void,
-        subscribe: (channel: string) => Stream.empty,
+        get: (_key: string) => Effect.succeed(null),
+        set: (_key: string, _value: string) => Effect.void,
+        publish: (_channel: string, _message: string) => Effect.void,
+        subscribe: (_channel: string) => Stream.empty,
       });
     }
 
@@ -141,24 +141,23 @@ export const RedisClientLayer = Layer.unwrapScoped(
         Effect.acquireRelease(
           Effect.gen(function* () {
             const subscriber = yield* createClient.pipe(
-              Effect.flatMap(connectClient).pipe(
-                Effect.mapError(
-                  (error) =>
-                    new RedisSubscribeError({
-                      message: error.message,
-                      cause: error.cause,
-                    }),
-                ),
+              Effect.flatMap(connectClient),
+              Effect.mapError(
+                (error: RedisConnectError) =>
+                  new RedisSubscribeError({
+                    message: error.message,
+                    cause: error.cause,
+                  }),
               ),
             );
 
-            subscriber.on("message", (ch, message) => {
+            subscriber.on("message", (ch: string, message: string) => {
               if (ch === channel) {
                 emit.single(message);
               }
             });
 
-            subscriber.on("error", (error) => {
+            subscriber.on("error", (error: unknown) => {
               emit.fail(
                 new RedisSubscribeError({
                   message: formatUnknownError(error),
