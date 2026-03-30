@@ -94,11 +94,10 @@ export const executeForgedBlock = async (
         })
         .filter(isDefined);
       if (!newVariables) return;
-      const { newSetVariableHistory, updatedState } = updateVariablesInSession({
+      const { newSetVariableHistory, updatedState } = updateVariablesInSession(
         newVariables,
-        state: newSessionState,
-        currentBlockId: block.id,
-      });
+        { state: newSessionState, currentBlockId: block.id },
+      );
       newSessionState = updatedState;
       setVariableHistory.push(...newSetVariableHistory);
     },

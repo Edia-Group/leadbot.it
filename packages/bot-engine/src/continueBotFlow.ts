@@ -127,11 +127,10 @@ export const continueBotFlow = async (
       parsedReplyResult.status === "success" &&
       parsedReplyResult.variablesToUpdate
     ) {
-      const { updatedState, newSetVariableHistory } = updateVariablesInSession({
-        state: newSessionState,
-        newVariables: parsedReplyResult.variablesToUpdate,
-        currentBlockId: block.id,
-      });
+      const { updatedState, newSetVariableHistory } = updateVariablesInSession(
+        parsedReplyResult.variablesToUpdate,
+        { state: newSessionState, currentBlockId: block.id },
+      );
       newSessionState = updatedState;
       setVariableHistory.push(...newSetVariableHistory);
     }
@@ -421,16 +420,15 @@ const processNonInputBlock = async ({
   }
 
   if (variableToUpdate) {
-    const { newSetVariableHistory, updatedState } = updateVariablesInSession({
-      state: newSessionState,
-      currentBlockId: block.id,
-      newVariables: [
+    const { newSetVariableHistory, updatedState } = updateVariablesInSession(
+      [
         {
           ...variableToUpdate,
           value: reply?.text ? safeJsonParse(reply?.text) : undefined,
         },
       ],
-    });
+      { state: newSessionState, currentBlockId: block.id },
+    );
     newSessionState = updatedState;
     setVariableHistory.push(...newSetVariableHistory);
   }
@@ -486,8 +484,8 @@ const saveAttachmentsVarIfAny = ({
 
   if (!variable) return state;
 
-  const { updatedState } = updateVariablesInSession({
-    newVariables: [
+  const { updatedState } = updateVariablesInSession(
+    [
       {
         id: variable.id,
         name: variable.name,
@@ -498,9 +496,8 @@ const saveAttachmentsVarIfAny = ({
             : reply.attachedFileUrls,
       },
     ],
-    currentBlockId: undefined,
-    state,
-  });
+    { currentBlockId: undefined, state },
+  );
   return updatedState;
 };
 
@@ -527,17 +524,16 @@ const saveAudioClipVarIfAny = ({
 
   if (!variable) return state;
 
-  const { updatedState } = updateVariablesInSession({
-    newVariables: [
+  const { updatedState } = updateVariablesInSession(
+    [
       {
         id: variable.id,
         name: variable.name,
         value: reply.url,
       },
     ],
-    currentBlockId: undefined,
-    state,
-  });
+    { currentBlockId: undefined, state },
+  );
 
   return updatedState;
 };
@@ -558,8 +554,8 @@ const saveInputVarIfAny = ({
   );
   if (!foundVariable) return state;
 
-  const { updatedState } = updateVariablesInSession({
-    newVariables: [
+  const { updatedState } = updateVariablesInSession(
+    [
       {
         ...foundVariable,
         value:
@@ -568,9 +564,8 @@ const saveInputVarIfAny = ({
             : reply.text,
       },
     ],
-    currentBlockId: undefined,
-    state,
-  });
+    { currentBlockId: undefined, state },
+  );
 
   return updatedState;
 };

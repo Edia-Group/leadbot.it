@@ -2,10 +2,8 @@ import { ORPCError } from "@orpc/server";
 import type { SessionState } from "@typebot.io/chat-session/schemas";
 import { EventType } from "@typebot.io/events/constants";
 import type { CommandEvent } from "@typebot.io/events/schemas";
-import { getBlockById } from "@typebot.io/groups/helpers/getBlockById";
 import { byId } from "@typebot.io/lib/utils";
 import { addDummyFirstBlockToGroupIfMissing } from "../addDummyFirstBlockToGroupIfMissing";
-import { addVirtualEdge } from "../addPortalEdge";
 
 type Props = {
   state: SessionState;
@@ -23,40 +21,10 @@ export const executeCommandEvent = ({ state, command }: Props) => {
 
   let newSessionState = state;
   if (newSessionState.currentBlockId) {
-    if (event.options?.resumeAfter) {
-      const { block, group } = getBlockById(
-        newSessionState.currentBlockId,
-        newSessionState.typebotsQueue[0].typebot.groups,
-      );
-      if (!block)
-        throw new ORPCError("BAD_REQUEST", {
-          message: "Block not found",
-        });
-      const virtualEdgeMetadata = addVirtualEdge(newSessionState, {
-        to: { groupId: group.id, blockId: block.id },
-      });
-      newSessionState = virtualEdgeMetadata.newSessionState;
-      newSessionState = {
-        ...newSessionState,
-        typebotsQueue: [
-          {
-            ...newSessionState.typebotsQueue[0],
-            queuedEdgeIds: newSessionState.typebotsQueue[0].queuedEdgeIds
-              ? [
-                  virtualEdgeMetadata.edgeId,
-                  ...newSessionState.typebotsQueue[0].queuedEdgeIds,
-                ]
-              : [virtualEdgeMetadata.edgeId],
-          },
-          ...newSessionState.typebotsQueue.slice(1),
-        ],
-      };
-    } else {
-      newSessionState.returnMark = {
-        status: "pending",
-        blockId: newSessionState.currentBlockId,
-      };
-    }
+    newSessionState.returnMark = {
+      status: "pending",
+      blockId: newSessionState.currentBlockId,
+    };
   }
 
   const nextEdge = newSessionState.typebotsQueue[0].typebot.edges.find(

@@ -25,14 +25,14 @@ const List = ({
   }) => JSX.Element;
 }) => {
   const { toasts } = ToastPrimitive.useToastManager();
+  if (toasts.length === 0) return null;
 
   return (
     <ToastPrimitive.Portal>
       <ToastPrimitive.Viewport
         {...props}
         className={cn(
-          // TODO: z-index is necessary here because toast portal is kept mounted at all times
-          "fixed top-auto right-4 bottom-4 mx-auto flex w-[250px] sm:right-8 sm:bottom-8 sm:w-96 z-10",
+          "fixed top-auto right-4 bottom-4 mx-auto flex w-[250px] sm:right-8 sm:bottom-8 sm:w-96",
           className,
         )}
       >

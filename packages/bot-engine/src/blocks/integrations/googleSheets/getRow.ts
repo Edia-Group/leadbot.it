@@ -107,11 +107,10 @@ export const getRow = async (
       [],
     );
     if (!newVariables) return { outgoingEdgeId };
-    const { updatedState, newSetVariableHistory } = updateVariablesInSession({
-      state,
+    const { updatedState, newSetVariableHistory } = updateVariablesInSession(
       newVariables,
-      currentBlockId: blockId,
-    });
+      { state, currentBlockId: blockId },
+    );
     return {
       outgoingEdgeId,
       newSessionState: updatedState,

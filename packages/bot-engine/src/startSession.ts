@@ -191,16 +191,15 @@ export const startSession = async ({
       : undefined;
 
     if (firstBlockId) {
-      const { updatedState, newSetVariableHistory } = updateVariablesInSession({
-        state: initialState,
-        newVariables: transformPrefilledVariablesToVariables(
+      const { updatedState, newSetVariableHistory } = updateVariablesInSession(
+        transformPrefilledVariablesToVariables(
           startParams.prefilledVariables,
           {
             existingVariables: typebotInSession.variables,
           },
         ),
-        currentBlockId: firstBlockId,
-      });
+        { state: initialState, currentBlockId: firstBlockId },
+      );
       initialState = updatedState;
       setVariableHistory.push(...newSetVariableHistory);
     }

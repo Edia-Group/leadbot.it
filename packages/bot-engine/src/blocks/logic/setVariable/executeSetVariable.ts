@@ -105,9 +105,8 @@ export const executeSetVariable = async (
     block.options.saveErrorInVariableId
       ? variables.find(byId(block.options.saveErrorInVariableId))
       : undefined;
-  const { newSetVariableHistory, updatedState } = updateVariablesInSession({
-    state,
-    newVariables: [
+  const { newSetVariableHistory, updatedState } = updateVariablesInSession(
+    [
       ...parseColateralVariableChangeIfAny({ state, options: block.options }),
       ...(saveInErrorVariable && error?.description
         ? [
@@ -126,8 +125,8 @@ export const executeSetVariable = async (
           : newVariable.isSessionVariable,
       },
     ],
-    currentBlockId: block.id,
-  });
+    { state, currentBlockId: block.id },
+  );
 
   return {
     outgoingEdgeId: block.outgoingEdgeId,

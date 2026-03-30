@@ -69,11 +69,10 @@ export const setReplyEventVariables = (
     });
   }
 
-  const { updatedState, newSetVariableHistory } = updateVariablesInSession({
-    state,
+  const { updatedState, newSetVariableHistory } = updateVariablesInSession(
     newVariables,
-    currentBlockId: state.currentBlockId,
-  });
+    { state, currentBlockId: state.currentBlockId },
+  );
 
   return {
     updatedState,
