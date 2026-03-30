@@ -8,15 +8,13 @@ import type {
 
 type Props = {
   state: SessionState;
-  newVariables: VariableWithUnknowValue[];
   currentBlockId: string | undefined;
 };
-// TODO: Refacto newVariables param first, other in second
-export const updateVariablesInSession = ({
-  state,
-  newVariables,
-  currentBlockId,
-}: Props): {
+
+export const updateVariablesInSession = (
+  newVariables: VariableWithUnknowValue[],
+  { state, currentBlockId }: Props,
+): {
   updatedState: SessionState;
   newSetVariableHistory: SetVariableHistoryItem[];
 } => {

@@ -125,7 +125,6 @@
   "blocks.bubbles.embed.blockCard.tooltip": "Embed a pdf, an iframe, a website...",
   "blocks.events.command.eventCard.tooltip": "Triggered when a custom command is sent.",
   "blocks.events.command.settings.command.placeholder": "Command",
-  "blocks.events.command.settings.resumeAfter.label": "Resume flow after",
   "blocks.events.reply.eventCard.tooltip": "Triggered when a reply is received.",
   "blocks.events.reply.node.prefix": "On reply",
   "blocks.events.reply.settings.variableMappingAccordion.title": "Map reply to variables",

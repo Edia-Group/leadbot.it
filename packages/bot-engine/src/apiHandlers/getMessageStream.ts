@@ -161,12 +161,13 @@ export const getMessageStream = async ({
           })
           .filter(isDefined);
         if (newVariables.length === 0) return;
-        const { updatedState, newSetVariableHistory } =
-          updateVariablesInSession({
-            newVariables,
+        const { updatedState, newSetVariableHistory } = updateVariablesInSession(
+          newVariables,
+          {
             state: newSessionState,
             currentBlockId: newSessionState.currentBlockId,
-          });
+          },
+        );
         newSessionState = updatedState;
         if (
           newSetVariableHistory.length > 0 &&

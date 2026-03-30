@@ -70,8 +70,7 @@ export const resumeChatCompletion =
       return newVariables;
     }, []);
     if (newVariables && newVariables.length > 0)
-      newSessionState = updateVariablesInSession({
-        newVariables,
+      newSessionState = updateVariablesInSession(newVariables, {
         state: newSessionState,
         currentBlockId: undefined,
       }).updatedState;

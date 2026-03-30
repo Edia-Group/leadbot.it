@@ -34,8 +34,7 @@ export const executeScript = async (
     });
 
     const updateVarResults = newVariables
-      ? updateVariablesInSession({
-          newVariables,
+      ? updateVariablesInSession(newVariables, {
           state,
           currentBlockId: block.id,
         })

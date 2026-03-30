@@ -95,11 +95,10 @@ export const saveDataInResponseVariableMapping = ({
     }
   }, []);
   if (newVariables && newVariables.length > 0) {
-    const { updatedState, newSetVariableHistory } = updateVariablesInSession({
+    const { updatedState, newSetVariableHistory } = updateVariablesInSession(
       newVariables,
-      state,
-      currentBlockId: blockId,
-    });
+      { state, currentBlockId: blockId },
+    );
     return {
       outgoingEdgeId,
       newSessionState: updatedState,

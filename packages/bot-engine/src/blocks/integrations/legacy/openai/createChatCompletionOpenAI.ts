@@ -68,9 +68,8 @@ export const createChatCompletionOpenAI = async (
     typebot.variables,
   )(options.messages, { sessionStore });
   if (variablesTransformedToList.length > 0)
-    newSessionState = updateVariablesInSession({
+    newSessionState = updateVariablesInSession(variablesTransformedToList, {
       state,
-      newVariables: variablesTransformedToList,
       currentBlockId: undefined,
     }).updatedState;
 
