@@ -138,7 +138,7 @@ const TypebotButton = ({
       >
         {typebot.publishedTypebotId && (
           <Badge colorScheme="orange" className="absolute top-[27px]">
-            {t("folders.typebotButton.live")}
+            {t("folders.LeadbotButton.live")}
           </Badge>
         )}
         {!isReadOnly && (
@@ -154,7 +154,7 @@ const TypebotButton = ({
             </Button>
             <Menu.Root>
               <Menu.TriggerButton
-                aria-label={t("folders.typebotButton.showMoreOptions")}
+                aria-label={t("folders.LeadbotButton.showMoreOptions")}
                 data-testid="more-button"
                 onClick={(e) => e.stopPropagation()}
                 variant="outline-secondary"
@@ -166,11 +166,11 @@ const TypebotButton = ({
               <Menu.Popup align="end">
                 {typebot.publishedTypebotId && (
                   <Menu.Item onClick={handleUnpublishClick}>
-                    {t("folders.typebotButton.unpublish")}
+                    {t("folders.LeadbotButton.unpublish")}
                   </Menu.Item>
                 )}
                 <Menu.Item onClick={handleDuplicateClick}>
-                  {t("folders.typebotButton.duplicate")}
+                  {t("folders.LeadbotButton.duplicate")}
                 </Menu.Item>
                 <Menu.Item className="text-red-10" onClick={handleDeleteClick}>
                   {t("delete")}
@@ -199,7 +199,7 @@ const TypebotButton = ({
         >
           <p>
             <T
-              keyName="folders.typebotButton.deleteConfirmationMessage"
+              keyName="folders.LeadbotButton.deleteConfirmationMessage"
               params={{
                 strong: <strong>{typebot.name}</strong>,
               }}
@@ -208,7 +208,7 @@ const TypebotButton = ({
           <Alert.Root variant="warning">
             <TriangleAlertIcon />
             <Alert.Description>
-              {t("folders.typebotButton.deleteConfirmationMessageWarning")}
+              {t("folders.LeadbotButton.deleteConfirmationMessageWarning")}
             </Alert.Description>
           </Alert.Root>
         </ConfirmDialog>

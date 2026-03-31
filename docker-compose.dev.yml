@@ -2,13 +2,21 @@ services:
   leadbot-db:
     image: postgres:16
     ports:
-      - "5432:5432"
+      # Host 5433 avoids clash with a local PostgreSQL service often bound to 5432 on Windows
+      - "5433:5432"
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: "leadbot"
       POSTGRES_PASSWORD: "leadbot"
+  # Catch outbound mail in dev: open http://localhost:8025 after sign-up / magic link
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    restart: unless-stopped
   minio:
     image: minio/minio
     command: server /data --console-address ":9001"

@@ -462,7 +462,7 @@
   "workspace.settings.modal.menu.myAccount.label": "Il mio account",
   "workspace.settings.modal.menu.preferences.label": "Preferenze",
   "workspace.settings.modal.menu.settings.label": "Impostazioni",
-  "workspace.settings.modal.menu.version.label": "Versione: {versione}",
+  "workspace.settings.modal.menu.version.label": "Versione: {version}",
   "workspace.settings.modal.menu.workspace.label": "Spazio di lavoro",
   "workspace.settings.name.label": "Nome:"
 }

@@ -33,7 +33,7 @@ export const CreateBotButton = ({
       <div className="flex flex-col items-center gap-6">
         <PlusSignIcon />
         <p className="font-medium max-w-40 text-center mt-6 text-lg">
-          {t("folders.createTypebotButton.label")}
+          {t("folders.createLeadbotButton.label")}
         </p>
       </div>
     </Button>

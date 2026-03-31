@@ -48,8 +48,11 @@ const executeCommand = (command: string) => {
   return new Promise<void>((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.log(error.message);
-        reject(error);
+        const detail = [error.message, stderr, stdout]
+          .filter(Boolean)
+          .join("\n");
+        console.log(detail);
+        reject(new Error(detail));
         return;
       }
       if (stderr) console.log(stderr);

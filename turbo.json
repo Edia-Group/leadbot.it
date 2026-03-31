@@ -15,6 +15,24 @@
       ],
       "outputLogs": "new-only"
     },
+    "landing-page#build:docker": {
+      "dependsOn": [
+        "^build",
+        "^db:generate",
+        "landing-page#content-collections:build"
+      ],
+      "env": [
+        "VERCEL_*",
+        "NEXTAUTH_URL",
+        "SENTRY_*",
+        "LANDING_PAGE_URL",
+        "START_TARGET",
+        "NEXT_PUBLIC_VIEWER_URL"
+      ],
+      "outputs": [".tanstack/**", ".output/**"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputLogs": "new-only"
+    },
     "content-collections:build": {
       "outputs": [".content-collections/generated/**"],
       "outputLogs": "new-only"
@@ -25,7 +43,7 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^db:generate", "^db:push", "@typebot.io/react#build"],
+      "dependsOn": ["^db:push", "@typebot.io/react#build"],
       "persistent": true
     },
     "build": {
@@ -58,6 +76,7 @@
       "cache": false
     },
     "db:push": {
+      "dependsOn": ["db:generate"],
       "cache": false
     },
     "check-broken-links": {

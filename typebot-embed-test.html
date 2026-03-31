@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typebot embed test</title>
+  </head>
+  <body>
+    <script>
+      const typebotInitScript = document.createElement("script");
+      typebotInitScript.type = "module";
+      // textContent è preferito a innerHTML per script inline creati in JS
+      typebotInitScript.textContent = `import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
+
+Typebot.initBubble({
+  typebot: "typebots-default-name-b6zct4c",
+  apiHost: "http://localhost:3001",
+  theme: {
+    button: { backgroundColor: "#1D1D1D" },
+    chatWindow: { backgroundColor: "#9B74B7" },
+  },
+});
+`;
+      document.body.append(typebotInitScript);
+    </script>
+  </body>
+</html>

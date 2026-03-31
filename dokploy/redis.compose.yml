@@ -1,0 +1,19 @@
+# Redis per Leadbot: in Dokploy → progetto leadbot.it → Compose → New compose,
+# incolla questo file (o punta al repo path dokploy/redis.compose.yml).
+# Dopo il deploy, copia l’hostname interno del servizio Redis dalla UI e imposta
+# REDIS_URL=redis://<hostname>:6379 su builder e viewer (stesso environment).
+services:
+  leadbot-redis:
+    image: redis:7-alpine
+    restart: always
+    command: redis-server --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - leadbot-redis-data:/data
+
+volumes:
+  leadbot-redis-data:
