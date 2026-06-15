@@ -46,16 +46,24 @@ RUN bunx turbo prune "${SCOPE}" --docker
 
 FROM base AS builder
 ARG DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/postgres
+# Build-resource caps to avoid OOM-ing a shared host (Dokploy). Tune via buildArgs:
+#   MAKE_JOBS         parallel native (g++) compile jobs
+#   BUILD_CONCURRENCY turbo tasks built in parallel (workspace packages)
+#   NODE_HEAP_MB      max old-space per Node process during the build
+ARG MAKE_JOBS=2
+ARG BUILD_CONCURRENCY=1
+ARG NODE_HEAP_MB=4096
 ENV START_TARGET=node-server
 ENV SKIP_ENV_CHECK=true
 ENV NEXT_PUBLIC_VIEWER_URL=http://localhost
 COPY --from=pruned /app/out/full/ .
 COPY bun.lock .
 COPY bunfig.toml .
-RUN SENTRYCLI_SKIP_DOWNLOAD=1 bun install
+RUN SENTRYCLI_SKIP_DOWNLOAD=1 MAKEFLAGS="-j${MAKE_JOBS}" bun install
 RUN DATABASE_URL=$DATABASE_URL bunx tsx packages/prisma/scripts/db-generate.ts
 RUN DATABASE_URL=$DATABASE_URL START_TARGET=node-server SKIP_ENV_CHECK=true \
-    bunx turbo run build:docker --filter=landing-page
+    NODE_OPTIONS="--max-old-space-size=${NODE_HEAP_MB}" \
+    bunx turbo run build:docker --filter=landing-page --concurrency=${BUILD_CONCURRENCY}
 
 FROM node:22-bullseye-slim AS release
 WORKDIR /app
