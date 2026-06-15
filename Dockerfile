@@ -92,11 +92,20 @@ ARG BUN_PKG_MANAGER
 ARG SCOPE
 ARG APP_DIR
 ARG DATABASE_URL=postgresql://
+# Build-resource caps to avoid OOM-ing a shared host (Dokploy). Tune via buildArgs:
+#   MAKE_JOBS         parallel native (g++) compile jobs for isolated-vm/sharp
+#   BUILD_CONCURRENCY turbo tasks built in parallel (workspace packages)
+#   NODE_HEAP_MB      max old-space per Node process during the build
+ARG MAKE_JOBS=2
+ARG BUILD_CONCURRENCY=1
+ARG NODE_HEAP_MB=4096
 COPY --from=pruned /app/out/full/ .
 COPY bun.lock .
 COPY bunfig.toml .
-RUN SENTRYCLI_SKIP_DOWNLOAD=1 bun install
-RUN SKIP_ENV_CHECK=true NEXT_PUBLIC_VIEWER_URL=http://localhost bunx turbo build --filter="${SCOPE}"
+RUN SENTRYCLI_SKIP_DOWNLOAD=1 MAKEFLAGS="-j${MAKE_JOBS}" bun install
+RUN SKIP_ENV_CHECK=true NEXT_PUBLIC_VIEWER_URL=http://localhost \
+    NODE_OPTIONS="--max-old-space-size=${NODE_HEAP_MB}" \
+    bunx turbo build --filter="${SCOPE}" --concurrency=${BUILD_CONCURRENCY}
 RUN DATABASE_URL=$DATABASE_URL bunx tsx packages/prisma/scripts/db-generate.ts
 
 # Runtime-only tools, kept outside the app's node_modules: prisma CLI for
