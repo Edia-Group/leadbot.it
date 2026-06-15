@@ -1,16 +1,11 @@
 import { LeadBotLogoFull } from "@/components/LeadBotLogo";
 import { TextLink } from "@/components/link";
-import { docsUrl, linkedInUrl } from "../../constants";
 import gradientSeparatorSrc from "./assets/gradient-separator.png";
 
 const data = [
   {
     title: "Prodotto",
     links: [
-      {
-        label: "Documentazione",
-        href: docsUrl,
-      },
       {
         label: "Prezzi",
         to: "/pricing",
@@ -27,10 +22,6 @@ const data = [
       {
         label: "Blog",
         to: "/blog",
-      },
-      {
-        label: "LinkedIn",
-        href: linkedInUrl,
       },
     ],
   },
@@ -121,10 +112,8 @@ export const Footer = () => {
                   {item.links.map((link) => (
                     <li key={link.label}>
                       <TextLink
-                        href={"href" in link ? link.href : undefined}
-                        to={"to" in link ? link.to : undefined}
+                        to={link.to}
                         params={"params" in link ? link.params : undefined}
-                        target={"href" in link ? "_blank" : undefined}
                         className="text-muted-foreground font-normal"
                         size="sm"
                       >

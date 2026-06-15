@@ -16,7 +16,8 @@ services:
     build:
       context: .
       args:
-        - SCOPE=builder
+        - SCOPE=@leadbot/builder
+        - APP_DIR=builder
     depends_on:
       leadbot-db-docker:
         condition: service_healthy
@@ -31,6 +32,7 @@ services:
       context: .
       args:
         - SCOPE=viewer
+        - APP_DIR=viewer
     depends_on:
       leadbot-db-docker:
         condition: service_healthy

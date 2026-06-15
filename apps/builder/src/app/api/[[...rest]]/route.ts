@@ -2,7 +2,6 @@ import { OpenAPIHandler } from "@orpc/openapi/fetch";
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
 import { onError } from "@orpc/server";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
-import * as Sentry from "@sentry/nextjs";
 import { authenticateWithBearerToken } from "@typebot.io/auth/helpers/authenticateWithBearerToken";
 import { auth } from "@typebot.io/auth/lib/nextAuth";
 import { createContext } from "@typebot.io/config/orpc/builder/context";
@@ -117,7 +116,6 @@ async function handleRequest(
           (await auth())?.user ||
           (await authenticateWithBearerToken(resolvedRequest));
         if (!user) return null;
-        Sentry.setUser({ id: user?.id });
         return user;
       },
     }),

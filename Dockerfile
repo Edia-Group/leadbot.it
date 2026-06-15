@@ -90,6 +90,7 @@ RUN bunx turbo prune "${SCOPE}" --docker
 FROM base AS builder
 ARG BUN_PKG_MANAGER
 ARG SCOPE
+ARG APP_DIR
 ARG DATABASE_URL=postgresql://
 COPY --from=pruned /app/out/full/ .
 COPY bun.lock .
@@ -98,21 +99,34 @@ RUN SENTRYCLI_SKIP_DOWNLOAD=1 bun install
 RUN SKIP_ENV_CHECK=true NEXT_PUBLIC_VIEWER_URL=http://localhost bunx turbo build --filter="${SCOPE}"
 RUN DATABASE_URL=$DATABASE_URL bunx tsx packages/prisma/scripts/db-generate.ts
 
+# Runtime-only tools, kept outside the app's node_modules: prisma CLI for
+# migrations at boot, next-runtime-env for the entrypoint's __ENV.js generation.
+# Everything else the server needs is already traced into .next/standalone.
+RUN mkdir /runtime-deps && cd /runtime-deps \
+    && npm install --no-audit --no-fund \
+    "prisma@$(node -p "require('/app/packages/prisma/package.json').dependencies.prisma")" \
+    "next-runtime-env@$(node -p "require('/app/apps/${APP_DIR}/package.json').devDependencies['next-runtime-env']")"
+
 # ================== RELEASE ======================
 
-FROM base AS release
-ARG SCOPE
-ENV SCOPE=${SCOPE}
-COPY --from=builder /app/node_modules ./node_modules
+FROM node:22-bullseye-slim AS release
+ARG APP_DIR
+ENV APP_DIR=${APP_DIR}
+RUN apt-get -qy update \
+    && apt-get -qy --no-install-recommends install openssl ca-certificates \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && update-ca-certificates
+WORKDIR /app
+COPY --from=builder /runtime-deps/node_modules ./node_modules
 COPY --from=builder /app/packages/prisma/postgresql ./packages/prisma/postgresql
-COPY --from=builder --chown=node:node /app/apps/${SCOPE}/.next/standalone ./
-COPY --from=builder --chown=node:node /app/apps/${SCOPE}/.next/static ./apps/${SCOPE}/.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/apps/${SCOPE}/public ./apps/${SCOPE}/public
+COPY --from=builder --chown=node:node /app/apps/${APP_DIR}/.next/standalone ./
+COPY --from=builder --chown=node:node /app/apps/${APP_DIR}/.next/static ./apps/${APP_DIR}/.next/static
+COPY --from=builder --chown=node:node /app/apps/${APP_DIR}/public ./apps/${APP_DIR}/public
 
-
-COPY scripts/${SCOPE}-entrypoint.sh ./
-RUN chmod +x ./${SCOPE}-entrypoint.sh
-ENTRYPOINT ./${SCOPE}-entrypoint.sh
+COPY scripts/${APP_DIR}-entrypoint.sh ./
+RUN chmod +x ./${APP_DIR}-entrypoint.sh
+ENTRYPOINT ./${APP_DIR}-entrypoint.sh
 
 EXPOSE 3000
 ENV PORT=3000

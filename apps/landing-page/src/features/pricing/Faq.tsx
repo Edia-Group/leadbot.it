@@ -7,56 +7,57 @@ import { type ReactNode, useState } from "react";
 
 const data = [
   {
-    title: "What is considered a monthly chat?",
+    title: "Cosa si intende per chat mensile?",
     content: (
       <>
-        A chat is counted whenever a user starts a discussion. It is independant
-        of the number of messages he sends and receives. For example if a user
-        starts a discussion and sends 10 messages to the bot, it will count as 1
-        chat. If the user chats again later and its session is remembered, it
-        will not be counted as a new chat. <br />
+        Una chat viene conteggiata ogni volta che un utente avvia una
+        conversazione, indipendentemente dal numero di messaggi inviati e
+        ricevuti. Ad esempio, se un utente avvia una conversazione e invia 10
+        messaggi al bot, conta come 1 chat. Se l'utente torna a scrivere più
+        tardi e la sua sessione viene ricordata, non viene conteggiata come una
+        nuova chat. <br />
         <br />
-        An easy way to think about it: 1 chat equals to a row in your Results
-        table
+        Un modo semplice per pensarci: 1 chat equivale a una riga nella tua
+        tabella Risultati.
       </>
     ),
   },
   {
-    title: "What happens once I reach the included chats limit?",
+    title: "Cosa succede quando raggiungo il limite di chat incluse?",
     content: (
       <>
-        That's amazing, your bots are working full speed. 🚀
+        Ottimo, i tuoi bot stanno lavorando a pieno ritmo. 🚀
         <br />
         <br />
-        You will first receive a heads up email when you reach 80% of your
-        included limit. Once you have reached 100%, you will receive another
-        email notification.
+        Riceverai prima un'email di avviso quando raggiungi l'80% del limite
+        incluso. Una volta arrivato al 100%, riceverai un'ulteriore notifica via
+        email.
         <br />
         <br />
-        After that, your chat limit be automatically upgraded to the next tier.
+        Dopodiché, il tuo limite di chat passerà automaticamente alla fascia
+        successiva.
       </>
     ),
   },
   {
-    title: "Can I cancel or change my subscription any time?",
+    title: "Posso disdire o cambiare l'abbonamento in qualsiasi momento?",
     content: (
       <>
-        Yes, you can cancel, upgrade or downgrade your subscription at any time.
-        There is no minimum time commitment or lock-in.
+        Sì, puoi disdire, fare upgrade o downgrade dell'abbonamento in qualsiasi
+        momento. Non c'è alcun vincolo di durata minima.
         <br />
         <br />
-        When you upgrade or downgrade your subscription, you'll get access to
-        the new options right away. Your next invoice will have a prorated
-        amount.
+        Quando fai upgrade o downgrade, hai subito accesso alle nuove opzioni. La
+        fattura successiva riporterà un importo proporzionale.
       </>
     ),
   },
   {
-    title: "Do you offer annual payments?",
+    title: "Offrite pagamenti annuali?",
     content: (
       <>
-        No, because subscriptions pricing is based on chats usage, we can only
-        offer monthly plans.
+        No, poiché il prezzo degli abbonamenti si basa sull'utilizzo delle chat,
+        possiamo offrire solo piani mensili.
       </>
     ),
   },

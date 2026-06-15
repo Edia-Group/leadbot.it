@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import type { WhatsAppCredentials } from "@typebot.io/credentials/schemas";
 import { env } from "@typebot.io/env";
 import { ky } from "@typebot.io/lib/ky";
@@ -43,13 +42,6 @@ export const sendWhatsAppTypingIndicator = async ({
     }
   } catch (err) {
     // Typing indicators are non-critical, log the error but don't throw
-    Sentry.captureException(err, {
-      tags: {
-        context: "whatsapp-typing-indicator",
-      },
-      extra: {
-        messageId,
-      },
-    });
+    console.error("whatsapp-typing-indicator", messageId, err);
   }
 };

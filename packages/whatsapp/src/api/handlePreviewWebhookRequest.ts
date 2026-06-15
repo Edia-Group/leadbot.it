@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import { deleteSession } from "@typebot.io/chat-session/queries/deleteSession";
 import { env } from "@typebot.io/env";
 import { parseUnknownError } from "@typebot.io/lib/parseUnknownError";
@@ -41,11 +40,6 @@ export const handlePreviewWebhookRequest = async ({
       );
     } else {
       console.warn("Incoming WhatsApp errors", errors);
-      Sentry.captureMessage("Incoming WhatsApp errors", {
-        extra: {
-          errors,
-        },
-      });
     }
   }
 
@@ -81,28 +75,9 @@ export const handlePreviewWebhookRequest = async ({
 
 const handleUnknownError = async (err: unknown) => {
   if (err instanceof WhatsAppError) {
-    Sentry.captureMessage(err.message, err.details);
+    console.warn("Known WhatsApp error", err.message, err.details);
   } else {
-    console.log("Sending unkown error to Sentry");
-    const details = safeJsonParse((await parseUnknownError({ err })).details);
-    console.log("details", details);
-    Sentry.addBreadcrumb({
-      data:
-        typeof details === "object" && details
-          ? details
-          : {
-              details,
-            },
-    });
-    Sentry.captureException(err);
-  }
-};
-
-const safeJsonParse = (value: string | undefined): unknown => {
-  if (!value) return value;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return value;
+    const parsedError = await parseUnknownError({ err });
+    console.error("Unknown WhatsApp flow error", parsedError);
   }
 };

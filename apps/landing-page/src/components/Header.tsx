@@ -11,9 +11,6 @@ import { LeadBotLogoFull } from "@/components/LeadBotLogo";
 import {
   breakpoints,
   dashboardUrl,
-  discordUrl,
-  docsUrl,
-  githubRepoUrl,
   registerUrl,
   signinUrl,
 } from "@/constants";
@@ -27,20 +24,8 @@ const links = [
     to: "/pricing",
   },
   {
-    label: "Blog",
-    to: "/blog",
-  },
-  {
-    label: "Documentazione",
-    href: docsUrl,
-  },
-  {
-    label: "GitHub",
-    href: githubRepoUrl,
-  },
-  {
-    label: "Community",
-    href: discordUrl,
+    label: "Casi d'uso",
+    to: "/casi-duso",
   },
   {
     label: "Chi siamo",
@@ -181,9 +166,7 @@ const Mobile = React.forwardRef<HTMLElement, Props>(function Mobile(
                 <TextLink
                   key={link.label}
                   className="no-underline text-xl font-normal"
-                  href={"href" in link ? link.href : undefined}
-                  target={"href" in link ? "_blank" : undefined}
-                  to={"to" in link ? link.to : undefined}
+                  to={link.to}
                 >
                   {link.label}
                 </TextLink>
@@ -207,24 +190,16 @@ const Mobile = React.forwardRef<HTMLElement, Props>(function Mobile(
 
 const desktopLinks = [
   {
-    label: "Blog",
-    to: "/blog",
-  },
-  {
-    label: "Community",
-    href: discordUrl,
-  },
-  {
     label: "Prezzi",
     to: "/pricing",
   },
   {
-    label: "Documentazione",
-    href: docsUrl,
+    label: "Casi d'uso",
+    to: "/casi-duso",
   },
   {
-    label: "GitHub",
-    href: githubRepoUrl,
+    label: "Chi siamo",
+    to: "/about",
   },
 ] as const;
 
@@ -290,8 +265,7 @@ const Desktop = React.forwardRef<
             variant="ghost"
             size="sm"
             className="font-normal"
-            href={"href" in link ? link.href : undefined}
-            to={"to" in link ? link.to : undefined}
+            to={link.to}
             activeProps={{
               className: "font-medium",
             }}

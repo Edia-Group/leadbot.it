@@ -1,2 +1,2 @@
 export const chatsTooltip =
-  "A chat is counted whenever a user starts a discussion. It is independant of the number of messages he sends and receives.";
+  "Una chat viene conteggiata ogni volta che un utente avvia una conversazione, indipendentemente dal numero di messaggi inviati e ricevuti.";

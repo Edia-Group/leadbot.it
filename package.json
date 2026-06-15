@@ -25,7 +25,7 @@
     "build-docker-compose-prod": "docker compose -f docker-compose.build.yml build",
     "start-docker-compose-prod": "docker compose -f docker-compose.yml up",
     "check-types": "turbo run check-types",
-    "build": "turbo run build --filter=@leadbot/builder... --filter=viewer... --filter=landing-page... --filter=docs...",
+    "build": "turbo run build --filter=@leadbot/builder... --filter=viewer...",
     "dev": "node scripts/dev.js",
     "dev:default": "bunx turbo dev --filter=@leadbot/builder... --filter=viewer... --concurrency=8",
     "dev:windows": "bunx turbo dev --only --filter=@leadbot/builder --filter=viewer --filter=landing-page --concurrency=5",

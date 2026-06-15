@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import prisma from "@typebot.io/prisma";
 import { z } from "zod";
 import { sessionStateSchema } from "../schemas";
@@ -17,7 +16,6 @@ export const getSession = async (sessionId: string) => {
       return val;
     }, sessionStateSchema.nullable())
     .parse(session.state);
-  Sentry.setUser({ id: parsedState?.typebotsQueue[0].typebot.id });
   return {
     ...session,
     state: parsedState,

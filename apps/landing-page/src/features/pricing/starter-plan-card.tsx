@@ -28,7 +28,7 @@ export const StarterPlanCard = ({
     <div className="flex flex-col gap-10 items-center">
       <h2>
         {formatPrice(prices.STARTER)}
-        <span className="text-lg">/month</span>
+        <span className="text-lg">/mese</span>
       </h2>
       {children}
     </div>
@@ -38,7 +38,7 @@ export const StarterPlanCard = ({
         size="lg"
         href={`${registerUrl}?subscribePlan=${Plan.STARTER}`}
       >
-        Subscribe now
+        Abbonati ora
       </CtaButtonLink>
     </PricingCardFooter>
   </PricingCardRoot>
@@ -46,30 +46,31 @@ export const StarterPlanCard = ({
 
 export const StarterPlanPerksList = () => (
   <ul className="flex flex-col gap-3">
-    <PerkListItem>All free plan features and...</PerkListItem>
+    <PerkListItem>Tutto del piano Gratis e...</PerkListItem>
     <PerkListItem>
       <span>
-        <span className="font-bold">{seatsLimits.STARTER} seats</span> included
+        <span className="font-bold">{seatsLimits.STARTER} postazioni</span>{" "}
+        incluse
       </span>
     </PerkListItem>
     <PerkListItem>
       <div className="flex flex-col gap-1">
         <span className="inline-flex">
           <span className="font-bold">
-            {new Intl.NumberFormat().format(chatsLimits.STARTER)} chats
+            {new Intl.NumberFormat().format(chatsLimits.STARTER)} chat
           </span>
-          /months
+          /mese
           <MoreInfoTooltip>{chatsTooltip}</MoreInfoTooltip>
         </span>
         <span className="text-xs text-muted-foreground">
-          Extra chats: $10 per 500
+          Chat extra: 10 € ogni 500
         </span>
       </div>
     </PerkListItem>
-    <PerkListItem>Native integration</PerkListItem>
-    <PerkListItem>Branding removed</PerkListItem>
-    <PerkListItem>Collect files from users</PerkListItem>
-    <PerkListItem>Create folders</PerkListItem>
-    <PerkListItem>Direct priority support</PerkListItem>
+    <PerkListItem>Integrazioni native</PerkListItem>
+    <PerkListItem>Branding rimosso</PerkListItem>
+    <PerkListItem>Raccolta file dagli utenti</PerkListItem>
+    <PerkListItem>Creazione cartelle</PerkListItem>
+    <PerkListItem>Supporto prioritario diretto</PerkListItem>
   </ul>
 );

@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import type { ResponseVariableMapping } from "@typebot.io/blocks-integrations/httpRequest/schema";
 import type { WebhookBlock } from "@typebot.io/blocks-logic/webhook/schema";
 import { env } from "@typebot.io/env";
@@ -89,7 +88,6 @@ export const WebhookSettings = ({
     } catch (err) {
       if ((err as Error).name === "AbortError") return;
       toast(await parseUnknownError({ err }));
-      Sentry.captureException(err);
     } finally {
       setWebsocketStatus("closed");
       abortRef.current = null;

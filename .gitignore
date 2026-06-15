@@ -73,3 +73,7 @@ opensrc/sources.json
 
 .ralph-tui/iterations
 .aider*
+.claude
+.codex
+.agents
+.cursor

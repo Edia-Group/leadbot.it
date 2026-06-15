@@ -1,6 +1,5 @@
 import { ORPCError } from "@orpc/server";
 import { createId } from "@paralleldrive/cuid2";
-import * as Sentry from "@sentry/nextjs";
 import { BubbleBlockType } from "@typebot.io/blocks-bubbles/constants";
 import { isInputBlock } from "@typebot.io/blocks-core/helpers";
 import type { Block } from "@typebot.io/blocks-core/schemas/schema";
@@ -97,7 +96,6 @@ export const startSession = async ({
   }
 > => {
   const typebot = await getTypebot(startParams);
-  Sentry.setUser({ id: typebot.id });
 
   const result = await getOrInitResult({
     resultId: startParams.type === "live" ? startParams.resultId : undefined,

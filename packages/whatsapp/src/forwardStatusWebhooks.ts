@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import { ky } from "@typebot.io/lib/ky";
 import prisma from "@typebot.io/prisma";
 import { settingsSchema } from "@typebot.io/settings/schemas";
@@ -64,21 +63,10 @@ export const forwardStatusWebhooks = async ({
         });
       } catch (error) {
         console.warn("Failed to forward WhatsApp statuses", { url, error });
-        Sentry.captureException(error, {
-          extra: {
-            url,
-            source: "whatsapp-status-forwarding",
-          },
-        });
       }
     }
   } catch (error) {
     console.warn("Unexpected error while forwarding WhatsApp statuses", error);
-    Sentry.captureException(error, {
-      extra: {
-        source: "whatsapp-status-forwarding",
-      },
-    });
   }
 };
 

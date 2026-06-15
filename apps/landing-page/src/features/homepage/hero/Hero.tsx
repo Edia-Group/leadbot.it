@@ -14,6 +14,18 @@ export const Hero = () => (
       } as React.CSSProperties
     }
   >
+    <div
+      aria-hidden
+      className="absolute inset-0 -z-10"
+      style={{
+        backgroundImage: [
+          "radial-gradient(60% 40% at 15% 12%, rgba(193,62,170,0.16), transparent 70%)",
+          "radial-gradient(55% 40% at 88% 28%, rgba(255,73,31,0.14), transparent 70%)",
+          "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
+        ].join(", "),
+        backgroundSize: "auto, auto, 24px 24px",
+      }}
+    />
     <div className="dark flex w-full justify-center sticky top-4 px-4">
       <TopBar className="hidden md:flex" />
     </div>

@@ -14,7 +14,18 @@ export const SignInPage = ({ type }: Props) => {
   const { query } = useRouter();
 
   return (
-    <div className="flex flex-col gap-4 h-dvh justify-center items-center">
+    <div
+      className="flex flex-col gap-4 h-dvh justify-center items-center"
+      style={{
+        backgroundColor: "#0b0b0d",
+        backgroundImage: [
+          "radial-gradient(60% 50% at 18% 12%, rgba(193,62,170,0.14), transparent 70%)",
+          "radial-gradient(55% 50% at 85% 88%, rgba(255,73,31,0.14), transparent 70%)",
+          "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)",
+        ].join(", "),
+        backgroundSize: "auto, auto, 22px 22px",
+      }}
+    >
       <Seo
         title={
           type === "signin"

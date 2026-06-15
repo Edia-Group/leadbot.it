@@ -16,7 +16,7 @@ export const SignInError = ({ error }: Props) => {
     EmailCreateAccount: t("auth.error.default"),
     Callback: t("auth.error.default"),
     Verification:
-      "Your email authentication request is expired. Please sign in again.",
+      "La richiesta di autenticazione via email è scaduta. Accedi di nuovo.",
     OAuthAccountNotLinked: t("auth.error.oauthNotLinked"),
     default: t("auth.error.unknown"),
   };

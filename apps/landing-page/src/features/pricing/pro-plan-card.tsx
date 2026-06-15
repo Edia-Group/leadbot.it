@@ -5,7 +5,6 @@ import {
 } from "@typebot.io/billing/constants";
 import { formatPrice } from "@typebot.io/billing/helpers/formatPrice";
 import { Plan } from "@typebot.io/prisma/enum";
-import { Button } from "@typebot.io/ui/components/Button";
 import { MoreInfoTooltip } from "@typebot.io/ui/components/MoreInfoTooltip";
 import { CtaButtonLink } from "@/components/link";
 import { registerUrl } from "@/constants";
@@ -25,7 +24,7 @@ export const ProPlanCard = ({ children }: { children?: React.ReactNode }) => (
     <div className="flex flex-col gap-10 items-center">
       <h2>
         {formatPrice(prices.PRO)}
-        <span className="text-lg">/month</span>
+        <span className="text-lg">/mese</span>
       </h2>
       {children}
     </div>
@@ -35,43 +34,36 @@ export const ProPlanCard = ({ children }: { children?: React.ReactNode }) => (
         size="lg"
         href={`${registerUrl}?subscribePlan=${Plan.PRO}`}
       >
-        Subscribe now
+        Abbonati ora
       </CtaButtonLink>
     </PricingCardFooter>
   </PricingCardRoot>
 );
 
-type ProPerksListProps = {
-  onChatsTiersClick: () => void;
-};
-
-export const ProPerksList = ({ onChatsTiersClick }: ProPerksListProps) => (
+export const ProPerksList = () => (
   <ul className="flex flex-col gap-3">
-    <PerkListItem>All Starter plan features and...</PerkListItem>
+    <PerkListItem>Tutto del piano Starter e...</PerkListItem>
     <PerkListItem>
       <span>
-        <span className="font-bold">{seatsLimits.PRO} seats</span> included
+        <span className="font-bold">{seatsLimits.PRO} postazioni</span> incluse
       </span>
     </PerkListItem>
     <PerkListItem>
       <div className="flex flex-col gap-1">
         <span className="inline-flex">
           <span className="font-bold">
-            {new Intl.NumberFormat().format(chatsLimits.PRO)} chats
+            {new Intl.NumberFormat().format(chatsLimits.PRO)} chat
           </span>
-          /months
+          /mese
           <MoreInfoTooltip>{chatsTooltip}</MoreInfoTooltip>
         </span>
         <span className="text-xs text-muted-foreground">
-          Extra chats:{" "}
-          <Button size="xs" variant="outline" onClick={onChatsTiersClick}>
-            See tiers
-          </Button>
+          Chat extra disponibili su richiesta
         </span>
       </div>
     </PerkListItem>
-    <PerkListItem>WhatsApp integration</PerkListItem>
-    <PerkListItem>Custom domains</PerkListItem>
-    <PerkListItem>In-depth analytics</PerkListItem>
+    <PerkListItem>Integrazione WhatsApp</PerkListItem>
+    <PerkListItem>Domini personalizzati</PerkListItem>
+    <PerkListItem>Analisi avanzate</PerkListItem>
   </ul>
 );

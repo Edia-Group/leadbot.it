@@ -1,4 +1,3 @@
-import { withSentryConfig } from "@sentry/nextjs";
 import { dirname, join } from "path";
 import "@typebot.io/env/compiled";
 import { configureRuntimeEnv } from "next-runtime-env/build/configure.js";
@@ -47,17 +46,10 @@ const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "fr", "pt", "pt-BR", "de", "ro", "es", "it", "el"],
+    defaultLocale: "it",
+    locales: ["it", "en"],
   },
   outputFileTracingRoot: join(__dirname, "../../"),
-  webpack: (config) => {
-    config.ignoreWarnings = [
-      { module: /@opentelemetry\/instrumentation/ },
-      { module: /require-in-the-middle/ },
-    ];
-    return config;
-  },
   headers: async () => {
     const isDev = process.env.NODE_ENV !== "production";
     return [
@@ -103,12 +95,4 @@ const nextConfig = {
   },
 };
 
-export default process.env.SENTRY_DSN && process.env.SENTRY_AUTH_TOKEN
-  ? withSentryConfig(nextConfig, {
-      telemetry: false,
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      widenClientFileUpload: true,
-    })
-  : nextConfig;
+export default nextConfig;

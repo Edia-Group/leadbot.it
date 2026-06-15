@@ -12,26 +12,24 @@ export const EnterprisePlanCard = () => (
       <div className="flex flex-col gap-3">
         <h2>Enterprise</h2>
         <p>
-          Ideal for large companies looking to generate leads and automate
-          customer support at scale
+          Ideale per agenzie e aziende che vogliono generare lead e automatizzare
+          il supporto clienti su larga scala
         </p>
       </div>
       <ul className="flex flex-col gap-3 shrink-0">
-        <PerkListItem>Custom chats limit & seats</PerkListItem>
-        <PerkListItem>Contract with SLAs</PerkListItem>
-        <PerkListItem>
-          24/7 support with a designated representative
-        </PerkListItem>
-        <PerkListItem>SSO & Granular access rights</PerkListItem>
-        <PerkListItem>Dedicated IP address</PerkListItem>
-        <PerkListItem>ISO 27001 Certified Security</PerkListItem>
-        <PerkListItem>Custom Security Questionnaires</PerkListItem>
-        <PerkListItem>Custom Features Development (add-on)</PerkListItem>
+        <PerkListItem>Limite chat e postazioni personalizzati</PerkListItem>
+        <PerkListItem>Contratto con SLA</PerkListItem>
+        <PerkListItem>Supporto 24/7 con referente dedicato</PerkListItem>
+        <PerkListItem>SSO e permessi di accesso granulari</PerkListItem>
+        <PerkListItem>Indirizzo IP dedicato</PerkListItem>
+        <PerkListItem>Sicurezza certificata ISO 27001</PerkListItem>
+        <PerkListItem>Questionari di sicurezza personalizzati</PerkListItem>
+        <PerkListItem>Sviluppo funzionalità su misura (add-on)</PerkListItem>
       </ul>
     </div>
     <PricingCardFooter>
       <CtaButtonLink variant="secondary" size="lg" href={enterpriseLeadFormUrl}>
-        Get a quote
+        Richiedi un preventivo
       </CtaButtonLink>
     </PricingCardFooter>
   </PricingCardRoot>

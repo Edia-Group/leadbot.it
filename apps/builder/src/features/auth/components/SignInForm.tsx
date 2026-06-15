@@ -60,7 +60,7 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
       toast({
         type: "info",
         description:
-          "Your account has suspicious activity and is being reviewed by our team. Feel free to contact us.",
+          "Il tuo account presenta attività sospette ed è in fase di revisione da parte del nostro team. Contattaci pure.",
       });
     }
   }, [authError]);
@@ -88,12 +88,12 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
           });
         else if (response.error.includes("email-not-legit"))
           toast({
-            description: "Please use a valid email address",
+            description: "Inserisci un indirizzo email valido",
           });
         else
           toast({
             description: t("errorMessage"),
-            details: "Check server logs to see relevent error message.",
+            details: "Controlla i log del server per il messaggio di errore.",
           });
       } else {
         setIsMagicCodeSent(true);
@@ -101,7 +101,7 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
     } catch (_e) {
       toast({
         type: "info",
-        description: "An error occured while signing in",
+        description: "Si è verificato un errore durante l'accesso",
       });
     }
     setAuthLoading(false);
@@ -174,7 +174,7 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
             </div>
           </Alert.Root>
           <Field.Root>
-            <Field.Label>Login code:</Field.Label>
+            <Field.Label>Codice di accesso:</Field.Label>
             <Otp.Root maxLength={6} onComplete={redirectToMagicLink}>
               <Otp.Group>
                 <Otp.Slot index={0} />

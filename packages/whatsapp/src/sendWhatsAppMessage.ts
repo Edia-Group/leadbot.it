@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import type { WhatsAppCredentials } from "@typebot.io/credentials/schemas";
 import { env } from "@typebot.io/env";
 import { ky } from "@typebot.io/lib/ky";
@@ -42,9 +41,6 @@ export const sendWhatsAppMessage = async ({
       );
     }
   } catch (err) {
-    Sentry.addBreadcrumb({
-      message: JSON.stringify(message),
-    });
     throw err;
   }
 };

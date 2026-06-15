@@ -15,6 +15,7 @@ import { Route as LayoutRouteImport } from './routes/_layout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LayoutPricingRouteImport } from './routes/_layout/pricing'
 import { Route as LayoutOssFriendsRouteImport } from './routes/_layout/oss-friends'
+import { Route as LayoutCasiDusoRouteImport } from './routes/_layout/casi-duso'
 import { Route as LayoutAboutRouteImport } from './routes/_layout/about'
 import { Route as LayoutSlugRouteImport } from './routes/_layout/$slug'
 import { Route as LayoutTemplatesIndexRouteImport } from './routes/_layout/templates/index'
@@ -43,6 +44,11 @@ const LayoutPricingRoute = LayoutPricingRouteImport.update({
 const LayoutOssFriendsRoute = LayoutOssFriendsRouteImport.update({
   id: '/oss-friends',
   path: '/oss-friends',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCasiDusoRoute = LayoutCasiDusoRouteImport.update({
+  id: '/casi-duso',
+  path: '/casi-duso',
   getParentRoute: () => LayoutRoute,
 } as any)
 const LayoutAboutRoute = LayoutAboutRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$slug': typeof LayoutSlugRoute
   '/about': typeof LayoutAboutRoute
+  '/casi-duso': typeof LayoutCasiDusoRoute
   '/oss-friends': typeof LayoutOssFriendsRoute
   '/pricing': typeof LayoutPricingRoute
   '/blog/$slug': typeof LayoutBlogSlugRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof LayoutSlugRoute
   '/about': typeof LayoutAboutRoute
+  '/casi-duso': typeof LayoutCasiDusoRoute
   '/oss-friends': typeof LayoutOssFriendsRoute
   '/pricing': typeof LayoutPricingRoute
   '/blog/$slug': typeof LayoutBlogSlugRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/_layout': typeof LayoutRouteWithChildren
   '/_layout/$slug': typeof LayoutSlugRoute
   '/_layout/about': typeof LayoutAboutRoute
+  '/_layout/casi-duso': typeof LayoutCasiDusoRoute
   '/_layout/oss-friends': typeof LayoutOssFriendsRoute
   '/_layout/pricing': typeof LayoutPricingRoute
   '/_layout/blog/$slug': typeof LayoutBlogSlugRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$slug'
     | '/about'
+    | '/casi-duso'
     | '/oss-friends'
     | '/pricing'
     | '/blog/$slug'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$slug'
     | '/about'
+    | '/casi-duso'
     | '/oss-friends'
     | '/pricing'
     | '/blog/$slug'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/_layout'
     | '/_layout/$slug'
     | '/_layout/about'
+    | '/_layout/casi-duso'
     | '/_layout/oss-friends'
     | '/_layout/pricing'
     | '/_layout/blog/$slug'
@@ -218,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutOssFriendsRouteImport
       parentRoute: typeof LayoutRoute
     }
+    '/_layout/casi-duso': {
+      id: '/_layout/casi-duso'
+      path: '/casi-duso'
+      fullPath: '/casi-duso'
+      preLoaderRoute: typeof LayoutCasiDusoRouteImport
+      parentRoute: typeof LayoutRoute
+    }
     '/_layout/about': {
       id: '/_layout/about'
       path: '/about'
@@ -284,6 +303,7 @@ declare module '@tanstack/react-start/server' {
 interface LayoutRouteChildren {
   LayoutSlugRoute: typeof LayoutSlugRoute
   LayoutAboutRoute: typeof LayoutAboutRoute
+  LayoutCasiDusoRoute: typeof LayoutCasiDusoRoute
   LayoutOssFriendsRoute: typeof LayoutOssFriendsRoute
   LayoutPricingRoute: typeof LayoutPricingRoute
   LayoutBlogSlugRoute: typeof LayoutBlogSlugRoute
@@ -295,6 +315,7 @@ interface LayoutRouteChildren {
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutSlugRoute: LayoutSlugRoute,
   LayoutAboutRoute: LayoutAboutRoute,
+  LayoutCasiDusoRoute: LayoutCasiDusoRoute,
   LayoutOssFriendsRoute: LayoutOssFriendsRoute,
   LayoutPricingRoute: LayoutPricingRoute,
   LayoutBlogSlugRoute: LayoutBlogSlugRoute,

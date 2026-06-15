@@ -12,7 +12,7 @@ export const EmailRedirectPage = () => {
 
   const redirectToMagicLink = () => {
     if (!token || !email) {
-      toast({ description: "Missing token or email query params" });
+      toast({ description: "Parametri token o email mancanti" });
       return;
     }
     window.location.assign(
@@ -24,21 +24,15 @@ export const EmailRedirectPage = () => {
 
   return (
     <div className="flex flex-col items-center gap-2 h-screen justify-center">
-      <Seo title={"Email auth confirmation"} />
+      <Seo title={"Conferma autenticazione email"} />
       <div className="flex flex-col p-10 rounded-8 border gap-6 bg-gray-1">
         <div className="flex flex-col gap-4">
-          <h2
-            onClick={() => {
-              throw new Error("Sentry is working");
-            }}
-          >
-            Email authentication
-          </h2>
+          <h2>Autenticazione via email</h2>
           <p>
-            You are about to login with <Badge>{email}</Badge>
+            Stai per accedere con <Badge>{email}</Badge>
           </p>
         </div>
-        <Button onClick={redirectToMagicLink}>Continue</Button>
+        <Button onClick={redirectToMagicLink}>Continua</Button>
       </div>
     </div>
   );

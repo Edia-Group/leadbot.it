@@ -1,6 +1,5 @@
 import { RPCHandler } from "@orpc/server/fetch";
 import { CORSPlugin } from "@orpc/server/plugins";
-import * as Sentry from "@sentry/nextjs";
 import { auth } from "@typebot.io/auth/lib/nextAuth";
 import { createContext } from "@typebot.io/config/orpc/builder/context";
 import { appRouter } from "../../router";
@@ -16,7 +15,6 @@ async function handleRequest(request: Request) {
       authenticate: async () => {
         const session = await auth();
         if (!session?.user) return null;
-        Sentry.setUser({ id: session.user.id });
         return session.user;
       },
     }),

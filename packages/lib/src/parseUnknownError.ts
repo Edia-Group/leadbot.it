@@ -1,5 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
-
 type Props = {
   context?: string;
   err: unknown;
@@ -35,7 +33,6 @@ export const parseUnknownError = async ({
     };
   } catch (err) {
     console.error(err);
-    Sentry.captureException(err);
     return {
       context,
       description: "Unknown error (failed to parse)",
@@ -70,7 +67,7 @@ export const parseUnknownErrorSync = ({
       description: JSON.stringify(err),
     };
   } catch (err) {
-    Sentry.captureException(err);
+    console.error(err);
     return {
       context,
       description: "Unknown error (failed to parse)",

@@ -1,4 +1,3 @@
-import * as Sentry from "@sentry/nextjs";
 import { parseUnknownError } from "@typebot.io/lib/parseUnknownError";
 import { after } from "next/server";
 import {
@@ -26,11 +25,6 @@ export const handleProductionWebhookRequest = async ({
 
   if (errors.length > 0) {
     console.warn("Incoming WhatsApp errors", errors);
-    Sentry.captureMessage("Incoming WhatsApp errors", {
-      extra: {
-        errors,
-      },
-    });
   }
 
   const incomingMessagesDetails = groupIncomingWebhookEntriesPerUser(entry);
@@ -69,19 +63,8 @@ export const handleProductionWebhookRequest = async ({
               if (err instanceof WhatsAppError) {
                 console.log("Known WA error", err.message, err.details);
               } else {
-                console.log("Sending unknown error to Sentry");
                 const parsedError = await parseUnknownError({ err });
-                console.log(parsedError);
-                const details = safeJsonParse(parsedError.details);
-                Sentry.addBreadcrumb({
-                  data:
-                    typeof details === "object" && details
-                      ? details
-                      : {
-                          details,
-                        },
-                });
-                Sentry.captureException(err);
+                console.error("Unknown WhatsApp flow error", parsedError);
               }
             }
           }
@@ -90,21 +73,12 @@ export const handleProductionWebhookRequest = async ({
     ]);
 
     if (forwardingResult.status === "rejected") {
-      Sentry.captureException(forwardingResult.reason);
+      console.error(forwardingResult.reason);
     }
     if (resumingResult.status === "rejected") {
-      Sentry.captureException(resumingResult.reason);
+      console.error(resumingResult.reason);
     }
   });
 
   return WEBHOOK_SUCCESS_MESSAGE;
-};
-
-const safeJsonParse = (value: string | undefined): unknown => {
-  if (!value) return value;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return value;
-  }
 };
