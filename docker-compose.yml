@@ -43,16 +43,25 @@ services:
     networks:
       - leadbot-network
 
-  # Using Typebot base images until LeadBot custom images are built
   leadbot-builder:
     <<: *leadbot-common
-    image: baptistearno/typebot-builder:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SCOPE: "@leadbot/builder"
+        APP_DIR: builder
     ports:
       - "8080:3000"
 
   leadbot-viewer:
     <<: *leadbot-common
-    image: baptistearno/typebot-viewer:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SCOPE: viewer
+        APP_DIR: viewer
     ports:
       - "8081:3000"
 
