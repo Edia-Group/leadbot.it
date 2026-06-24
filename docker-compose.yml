@@ -65,6 +65,29 @@ services:
     ports:
       - "8081:3000"
 
+  leadbot-landing:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.landing
+      args:
+        SCOPE: landing-page
+    networks:
+      - leadbot-network
+    env_file: .env
+    ports:
+      - "8082:3000"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3000/healthz').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
 networks:
   leadbot-network:
     driver: bridge

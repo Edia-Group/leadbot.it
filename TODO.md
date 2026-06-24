@@ -8,14 +8,14 @@ Data ultimo aggiornamento: 2026-06-18
 - [x] Redis nel docker-compose.yml ✓
 - [x] Health check su DB e Redis nel compose ✓
 - [x] Entrypoint che esegue `prisma migrate deploy` all'avvio ✓
-- [ ] **`docker-compose.yml` usa ancora immagini Typebot upstream** (`baptistearno/typebot-*`) invece di buildare dalla repo → aggiungere `build:` context (**FIX IN QUESTO COMMIT**)
+- [x] `docker-compose.yml` builda builder e viewer dalla repo (`build:` context) invece di immagini Typebot upstream ✓
 
 ## Alta priorità (MVP funzionante)
 
 - [ ] Configurare `.env` di produzione su Dokploy (ENCRYPTION_SECRET 32 char, DATABASE_URL, NEXTAUTH_URL, NEXT_PUBLIC_VIEWER_URL, SMTP, S3)
 - [ ] S3 / object storage per upload file (MinIO self-hosted o Cloudflare R2) — senza questo i file caricati dai bot non funzionano
 - [ ] SMTP produzione (Resend / SendGrid / SES) — senza questo il login magic-link non funziona
-- [ ] Landing page: aggiungere al compose Dokploy come servizio separato (usa `Dockerfile.landing`)
+- [x] Landing page: aggiunta al compose Dokploy come servizio separato `leadbot-landing` (`Dockerfile.landing`, porta 8082, healthcheck `/healthz`) ✓
 - [ ] Reverse proxy / dominio: configurare Traefik o Nginx davanti a builder (porta 8080) e viewer (porta 8081)
 
 ## Media priorità (dopo il primo deploy)
