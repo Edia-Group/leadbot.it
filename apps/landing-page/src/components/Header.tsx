@@ -254,9 +254,11 @@ const Desktop = React.forwardRef<
         ref={ref}
         className={cx(
           "flex rounded-2xl border px-2 py-2 bg-linear-to-b transition-colors gap-2 items-center",
-          appearance === "dark"
-            ? "dark from-[#393939] to-[#121212]"
-            : "from-white to-[#DEDEDE]",
+          pathname === "/"
+            ? "dark border-transparent from-transparent to-transparent"
+            : appearance === "dark"
+              ? "dark from-[#393939] to-[#121212]"
+              : "from-white to-[#DEDEDE]",
         )}
       >
         {desktopLinks.map((link) => (
