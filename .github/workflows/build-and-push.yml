@@ -1,0 +1,84 @@
+name: Build and Push Docker images
+
+# Deleghiamo la build delle immagini frontend a GitHub Actions (l'host Dokploy
+# condiviso andava in OOM buildando bun/turbo). Le immagini vengono pubblicate
+# su registry.edia.cloud; su Dokploy le app vanno configurate come "Docker"
+# (pull dell'immagine) invece di "build from GitHub".
+#
+# Trigger manuale dalla tab "Actions". L'input "image" sceglie quale buildare.
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "Quale immagine buildare"
+        type: choice
+        default: all
+        options:
+          - all
+          - builder
+          - viewer
+          - landing
+
+env:
+  REGISTRY: registry.edia.cloud
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    # Usa l'environment "prod" così il job ha accesso ai suoi secrets
+    # (REGISTRY_USERNAME / REGISTRY_PASSWORD).
+    environment: prod
+    # Buildiamo le tre immagini su runner separati (ogni job ha la sua RAM,
+    # quindi niente OOM tra build concorrenti come succedeva su Dokploy).
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: builder
+            image: leadbot-builder
+            dockerfile: Dockerfile
+            build-args: |
+              SCOPE=@leadbot/builder
+              APP_DIR=builder
+          - name: viewer
+            image: leadbot-viewer
+            dockerfile: Dockerfile
+            build-args: |
+              SCOPE=viewer
+              APP_DIR=viewer
+          - name: landing
+            image: leadbot-landing
+            dockerfile: Dockerfile.landing
+            build-args: ""
+    # Salta i job della matrice non selezionati dall'input.
+    if: ${{ github.event.inputs.image == 'all' || github.event.inputs.image == matrix.name }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build and push ${{ matrix.image }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          # Lo stage finale "release" è quello che Dokploy usava (dockerBuildStage=release).
+          target: release
+          build-args: ${{ matrix.build-args }}
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ matrix.image }}:latest
+            ${{ env.REGISTRY }}/${{ matrix.image }}:${{ github.sha }}
+          # Cache per-immagine così le build non si sovrascrivono a vicenda.
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}
