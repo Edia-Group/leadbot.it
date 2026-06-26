@@ -2,7 +2,7 @@ name: Build and Push Docker images
 
 # Deleghiamo la build delle immagini frontend a GitHub Actions (l'host Dokploy
 # condiviso andava in OOM buildando bun/turbo). Le immagini vengono pubblicate
-# su registry.edia.cloud; su Dokploy le app vanno configurate come "Docker"
+# su registry.edia.cloud; su Dokploy le app sono configurate come "Docker"
 # (pull dell'immagine) invece di "build from GitHub".
 #
 # Trigger manuale dalla tab "Actions". L'input "image" sceglie quale buildare.
@@ -23,35 +23,41 @@ env:
   REGISTRY: registry.edia.cloud
 
 jobs:
+  # Costruisce la matrice di build a partire dall'input: tutte le immagini
+  # oppure solo quella selezionata. (Il context `matrix` non e' utilizzabile
+  # nell'`if` a livello di job, quindi filtriamo qui.)
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - name: Compute build matrix
+        id: set
+        run: |
+          all='[
+            {"name":"builder","image":"leadbot-builder","dockerfile":"Dockerfile","build-args":"SCOPE=@leadbot/builder\nAPP_DIR=builder"},
+            {"name":"viewer","image":"leadbot-viewer","dockerfile":"Dockerfile","build-args":"SCOPE=viewer\nAPP_DIR=viewer"},
+            {"name":"landing","image":"leadbot-landing","dockerfile":"Dockerfile.landing","build-args":""}
+          ]'
+          sel='${{ github.event.inputs.image }}'
+          if [ "$sel" = "all" ]; then
+            matrix=$(echo "$all" | jq -c '{include: .}')
+          else
+            matrix=$(echo "$all" | jq -c --arg s "$sel" '{include: [.[] | select(.name==$s)]}')
+          fi
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
   build-and-push:
+    needs: prepare
     runs-on: ubuntu-latest
     # Usa l'environment "prod" così il job ha accesso ai suoi secrets
     # (REGISTRY_USERNAME / REGISTRY_PASSWORD).
     environment: prod
-    # Buildiamo le tre immagini su runner separati (ogni job ha la sua RAM,
-    # quindi niente OOM tra build concorrenti come succedeva su Dokploy).
+    # Ogni immagine su un runner separato (RAM dedicata, niente OOM tra build
+    # concorrenti come succedeva su Dokploy).
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - name: builder
-            image: leadbot-builder
-            dockerfile: Dockerfile
-            build-args: |
-              SCOPE=@leadbot/builder
-              APP_DIR=builder
-          - name: viewer
-            image: leadbot-viewer
-            dockerfile: Dockerfile
-            build-args: |
-              SCOPE=viewer
-              APP_DIR=viewer
-          - name: landing
-            image: leadbot-landing
-            dockerfile: Dockerfile.landing
-            build-args: ""
-    # Salta i job della matrice non selezionati dall'input.
-    if: ${{ github.event.inputs.image == 'all' || github.event.inputs.image == matrix.name }}
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
 
     steps:
       - name: Checkout
