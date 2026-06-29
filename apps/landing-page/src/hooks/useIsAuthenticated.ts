@@ -5,8 +5,8 @@ export const useIsAuthenticated = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const LeadbotCookie = getTypebotCookie(document.cookie);
-    if (LeadbotCookie?.lastProvider || LeadbotCookie?.landingPage?.isMerged)
+    const NUCLEOCookie = getTypebotCookie(document.cookie);
+    if (NUCLEOCookie?.lastProvider || NUCLEOCookie?.landingPage?.isMerged)
       setIsAuthenticated(true);
   }, []);
 

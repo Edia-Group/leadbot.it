@@ -10,9 +10,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/_layout/about")({
   head: () => ({
     meta: createMetaTags({
-      title: "Chi Siamo | LeadBot",
+      title: "Chi Siamo | NUCLEO",
       description:
-        "LeadBot aiuta professionisti e agenzie italiane a generare più lead qualificati e automatizzare la gestione appuntamenti con chatbot intelligenti.",
+        "NUCLEO aiuta professionisti e agenzie italiane a generare più lead qualificati e automatizzare la gestione appuntamenti con chatbot intelligenti.",
       imagePath: "/images/default-og.png",
       path: "/about",
     }),
@@ -27,7 +27,7 @@ function RouteComponent() {
         <h1>Buone conversazioni, buoni rapporti</h1>
         <div className="flex flex-col gap-10 font-display text-3xl md:text-justify">
           <p>
-            Noi di LeadBot crediamo che{" "}
+            Noi di NUCLEO crediamo che{" "}
             <span className="group font-medium bg-clip-text text-transparent bg-linear-to-r from-[#c13eaa] to-[#ff491f] to-30%">
               <MessageSquareGradientIcon className="size-6 inline-flex group-hover:motion-preset-seesaw-lg" />{" "}
               ottime conversazioni
@@ -56,7 +56,7 @@ function RouteComponent() {
             brand.
           </p>
           <p>
-            LeadBot{" "}
+            NUCLEO{" "}
             <span className="group font-medium bg-clip-text text-transparent bg-linear-to-r from-[#c13eaa] to-[#ff491f] to-70%">
               <BuildingsGradientIcon className="size-6 inline-flex group-hover:motion-preset-bounce" />{" "}
               aiuta professionisti
@@ -69,7 +69,7 @@ function RouteComponent() {
             automazione.
           </p>
           <p className="font-bold">
-            Abbiamo creato LeadBot per sbloccare il potenziale dei chatbot e
+            Abbiamo creato NUCLEO per sbloccare il potenziale dei chatbot e
             renderli intuitivi, efficaci e pensati per il mercato italiano.
           </p>
           <p>Inizia a convertire!</p>

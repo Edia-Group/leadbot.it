@@ -17,9 +17,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/_layout/pricing")({
   head: () => ({
     meta: createMetaTags({
-      title: "Prezzi | LeadBot",
+      title: "Prezzi | NUCLEO",
       description:
-        "Piani e prezzi LeadBot per professionisti e agenzie italiane. Inizia gratis, scala con il tuo business.",
+        "Piani e prezzi NUCLEO per professionisti e agenzie italiane. Inizia gratis, scala con il tuo business.",
       imagePath: "/images/default-og.png",
       path: "/pricing",
     }),

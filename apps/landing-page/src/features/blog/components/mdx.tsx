@@ -108,7 +108,7 @@ const components = {
   ),
   Cta: ({
     highlight,
-    buttonLabel = "Create a Leadbot",
+    buttonLabel = "Create a NUCLEO",
     children,
   }: {
     highlight?: "default";

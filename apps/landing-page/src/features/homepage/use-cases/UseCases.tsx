@@ -19,7 +19,7 @@ const useCases = [
     images: {
       builder: {
         src: marketingBuilderSrc,
-        alt: "Esempio di bot per la generazione lead creato con LeadBot",
+        alt: "Esempio di bot per la generazione lead creato con NUCLEO",
       },
       bot: {
         src: marketingBotSrc,
@@ -32,7 +32,7 @@ const useCases = [
     images: {
       builder: {
         src: supportAndProductBuilderSrc,
-        alt: "Esempio di bot per il supporto clienti creato con LeadBot",
+        alt: "Esempio di bot per il supporto clienti creato con NUCLEO",
       },
       bot: {
         src: supportAndProductBotSrc,
@@ -45,7 +45,7 @@ const useCases = [
     images: {
       builder: {
         src: salesBuilderSrc,
-        alt: "Esempio di bot per la vendita creato con LeadBot",
+        alt: "Esempio di bot per la vendita creato con NUCLEO",
       },
       bot: {
         src: salesBotSrc,

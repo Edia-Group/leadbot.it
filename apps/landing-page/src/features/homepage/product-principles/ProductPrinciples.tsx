@@ -10,27 +10,27 @@ const data = [
   {
     title: "Esperienza di creazione intuitiva",
     content:
-      "LeadBot semplifica la creazione di interfacce conversazionali con numerose opzioni di personalizzazione. La nostra soluzione flessibile e scalabile utilizza blocchi di costruzione adattabili a qualsiasi esigenza aziendale. Ogni blocco ha impostazioni predefinite eccellenti, ma ogni piccolo dettaglio può essere configurato per soddisfare i tuoi requisiti.",
+      "NUCLEO semplifica la creazione di interfacce conversazionali con numerose opzioni di personalizzazione. La nostra soluzione flessibile e scalabile utilizza blocchi di costruzione adattabili a qualsiasi esigenza aziendale. Ogni blocco ha impostazioni predefinite eccellenti, ma ogni piccolo dettaglio può essere configurato per soddisfare i tuoi requisiti.",
   },
   {
     title: "Ampie capacità di messaggistica",
     content:
-      "LeadBot va oltre il semplice supporto clienti, offrendo flussi di chat versatili perfetti per quiz, sondaggi, marketing creativo e molto altro. È ideale per la generazione di lead, comunicazioni interne e diverse necessità dipartimentali, rendendolo uno strumento prezioso per tutta la tua organizzazione.",
+      "NUCLEO va oltre il semplice supporto clienti, offrendo flussi di chat versatili perfetti per quiz, sondaggi, marketing creativo e molto altro. È ideale per la generazione di lead, comunicazioni interne e diverse necessità dipartimentali, rendendolo uno strumento prezioso per tutta la tua organizzazione.",
   },
   {
     title: "Progettato per l'esperienza utente",
     content:
-      "Sperimenta una UX di prima classe e interfacce bellissime con LeadBot. Il nostro editor visuale facile da usare ti aiuta a creare conversazioni coinvolgenti e vivaci, rendendo le interazioni fluide e piacevoli.",
+      "Sperimenta una UX di prima classe e interfacce bellissime con NUCLEO. Il nostro editor visuale facile da usare ti aiuta a creare conversazioni coinvolgenti e vivaci, rendendo le interazioni fluide e piacevoli.",
   },
   {
     title: "Creato con passione per l'innovazione",
     content:
-      "LeadBot è 100% open source, costruito con la passione per dare potere a chi crea. La nostra community attiva condivide bot e funzionalità, contribuendo a un ricco ecosistema di innovazione e collaborazione. Unisciti a noi nel plasmare il futuro degli strumenti conversazionali.",
+      "NUCLEO è 100% open source, costruito con la passione per dare potere a chi crea. La nostra community attiva condivide bot e funzionalità, contribuendo a un ricco ecosistema di innovazione e collaborazione. Unisciti a noi nel plasmare il futuro degli strumenti conversazionali.",
   },
   {
     title: "Tecnologia in costante evoluzione",
     content:
-      "La tecnologia di LeadBot è in costante evoluzione, con aggiornamenti regolari che includono correzioni di bug, nuove funzionalità e miglioramenti delle prestazioni. Ci assicuriamo che la nostra piattaforma rimanga aggiornata e affidabile, offrendoti gli ultimi progressi e la migliore esperienza.",
+      "La tecnologia di NUCLEO è in costante evoluzione, con aggiornamenti regolari che includono correzioni di bug, nuove funzionalità e miglioramenti delle prestazioni. Ci assicuriamo che la nostra piattaforma rimanga aggiornata e affidabile, offrendoti gli ultimi progressi e la migliore esperienza.",
   },
 ];
 
@@ -60,7 +60,7 @@ export const ProductPrinciples = () => {
         </div>
         <img
           src={threeDButton}
-          alt="Illustrazione di un pulsante in 3D con il logo LeadBot sopra"
+          alt="Illustrazione di un pulsante in 3D con il logo NUCLEO sopra"
           className="max-w-lg md:block hidden"
         />
       </div>

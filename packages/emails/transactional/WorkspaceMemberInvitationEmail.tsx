@@ -58,7 +58,7 @@ export const WorkspaceMemberInvitationEmail = ({
 
           <Hr style={hr} />
           <Text style={footerText}>
-            LeadBot.io - Più clienti, meno telefonate
+            NUCLEO AI - Più clienti, meno telefonate
           </Text>
         </Container>
       </Body>
@@ -68,9 +68,9 @@ export const WorkspaceMemberInvitationEmail = ({
 
 WorkspaceMemberInvitationEmail.PreviewProps = {
   workspaceName: "My Workspace",
-  url: "https://leadbot.it",
-  hostEmail: "host@leadbot.it",
-  guestEmail: "guest@leadbot.it",
+  url: "https://nucleoai.it",
+  hostEmail: "host@nucleoai.it",
+  guestEmail: "guest@nucleoai.it",
 } as Props;
 
 export default WorkspaceMemberInvitationEmail;

@@ -6,7 +6,7 @@ type Params = {
 };
 
 // Risk scoring was part of Typebot-cloud's anti-abuse for its public platform.
-// LeadBot self-hosting serves known clients, so risk is always 0 (never blocks
+// NUCLEO self-hosting serves known clients, so risk is always 0 (never blocks
 // publishing). Signature kept so callers don't need to change.
 export const computeRiskLevel = async (
   _typebot: TypebotV6,

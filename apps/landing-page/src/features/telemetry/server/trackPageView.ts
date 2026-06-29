@@ -45,28 +45,28 @@ export const trackPageView = createServerFn({
     if (isBot(headers["user-agent"]))
       return new Response("BOT, SKIPPING...", { status: 200 });
 
-    let LeadbotCookie = getTypebotCookie(parseCookies());
+    let NUCLEOCookie = getTypebotCookie(parseCookies());
 
-    if (!LeadbotCookie || LeadbotCookie.consent === "declined")
+    if (!NUCLEOCookie || NUCLEOCookie.consent === "declined")
       return new Response("NO COOKIE SKIPPING...", { status: 200 });
 
-    if (!LeadbotCookie.landingPage) {
-      LeadbotCookie = initLandingPageCookieProp(LeadbotCookie);
+    if (!NUCLEOCookie.landingPage) {
+      NUCLEOCookie = initLandingPageCookieProp(NUCLEOCookie);
     } else if (
-      isCookieSessionExpired(LeadbotCookie.landingPage.session.createdAt)
+      isCookieSessionExpired(NUCLEOCookie.landingPage.session.createdAt)
     ) {
-      LeadbotCookie = resetLandingPageCookieSession(LeadbotCookie);
+      NUCLEOCookie = resetLandingPageCookieSession(NUCLEOCookie);
     }
 
-    if (!LeadbotCookie.landingPage)
+    if (!NUCLEOCookie.landingPage)
       throw new Error("Landing page cookie props are missing");
 
     await trackEvents([
       {
         name: "$pageview",
-        visitorId: LeadbotCookie.landingPage.id,
+        visitorId: NUCLEOCookie.landingPage.id,
         data: {
-          $session_id: LeadbotCookie.landingPage.session.id,
+          $session_id: NUCLEOCookie.landingPage.session.id,
           $current_url: ctx.data.url,
           $pathname: ctx.data.pathname,
           $referrer: ctx.data.referrer,
@@ -88,7 +88,7 @@ export const trackPageView = createServerFn({
     ]);
 
     setHeaders({
-      "Set-Cookie": serializeTypebotCookie(LeadbotCookie),
+      "Set-Cookie": serializeTypebotCookie(NUCLEOCookie),
     });
 
     return new Response("OK", { status: 200 });

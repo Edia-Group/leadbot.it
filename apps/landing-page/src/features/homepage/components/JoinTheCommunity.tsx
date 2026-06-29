@@ -74,7 +74,7 @@ export const JoinTheCommunity = () => (
             app di IA conversazionale
           </h2>
           <p className="text-gray-11">
-            Unisciti alla community di LeadBot per connetterti con altri
+            Unisciti alla community di NUCLEO per connetterti con altri
             esperti, condividere idee e imparare a creare automazioni avanzate.
             Ottieni risorse esclusive e partecipa alla crescita della rete che
             sta plasmando il futuro della messaggistica aziendale.

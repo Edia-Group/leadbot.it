@@ -49,7 +49,7 @@ export const AlmostReachedChatsLimitEmail = ({
             Your progress can be monitored on your workspace dashboard settings.{" "}
             <br />
             <br />
-            Check out the <a href="https://leadbot.it/pricing">pricing page</a>{" "}
+            Check out the <a href="https://nucleoai.it/pricing">pricing page</a>{" "}
             for information about the pay as you go tiers.
             <br />
             <br />
@@ -58,7 +58,7 @@ export const AlmostReachedChatsLimitEmail = ({
 
           <Hr style={hr} />
           <Text style={footerText}>
-            LeadBot.io - Più clienti, meno telefonate
+            NUCLEO AI - Più clienti, meno telefonate
           </Text>
         </Container>
       </Body>

@@ -8,7 +8,7 @@ export const Logo = () => (
     src={`${env.NEXTAUTH_URL}/images/logo.png`}
     width="32"
     height="32"
-    alt="LeadBot Logo"
+    alt="NUCLEO Logo"
     style={{
       margin: "24px 0",
       borderRadius: "3px",

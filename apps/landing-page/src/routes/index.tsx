@@ -17,9 +17,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: createMetaTags({
-      title: "Leadbot.it",
+      title: "NUCLEO",
       description:
-        "Leadbot.it è una piattaforma no-code che ti permette di creare e integrare facilmente chatbot avanzati in siti web e piattaforme di chat come WhatsApp.",
+        "NUCLEO è una piattaforma no-code che ti permette di creare e integrare facilmente chatbot avanzati in siti web e piattaforme di chat come WhatsApp.",
       imagePath: "/images/default-og.png",
       path: "",
     }),

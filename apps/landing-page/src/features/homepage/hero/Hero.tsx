@@ -44,7 +44,7 @@ export const Hero = () => (
         </span>
       </h1>
       <p className="text-center text-foreground/60 font-normal text-balance md:text-xl max-w-3xl animate-in fade-in slide-in-from-bottom-10 blur-in-sm fill-mode-both delay-3000 duration-600">
-        LeadBot.io è la piattaforma no-code pensata per professionisti e agenzie
+        NUCLEO AI è la piattaforma no-code pensata per professionisti e agenzie
         italiane. Crea chatbot intelligenti per qualificare lead, fissare
         appuntamenti e gestire follow-up automatici su WhatsApp e sito web.
       </p>

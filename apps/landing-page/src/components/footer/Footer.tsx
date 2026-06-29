@@ -127,7 +127,7 @@ export const Footer = () => {
           </div>
         </div>
         <p className="text-foreground/70 text-sm">
-          Tutti i diritti riservati 2026 - Leadbot.it
+          Tutti i diritti riservati 2026 - NUCLEO
         </p>
       </div>
     </footer>

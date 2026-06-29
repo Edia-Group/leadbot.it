@@ -19,7 +19,7 @@ const departments = [
     bulletPoints: [
       {
         main: "Lead scoring",
-        sub: "LeadBot pone domande qualificanti assegnando automaticamente una priorità ai nuovi lead.",
+        sub: "NUCLEO pone domande qualificanti assegnando automaticamente una priorità ai nuovi lead.",
       },
       {
         main: "Insight",

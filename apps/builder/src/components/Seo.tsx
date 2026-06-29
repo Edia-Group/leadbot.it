@@ -19,7 +19,7 @@ export const Seo = ({
   currentUrl?: string;
   imagePreviewUrl?: string;
 }) => {
-  const formattedTitle = `${title} | LeadBot`;
+  const formattedTitle = `${title} | NUCLEO`;
 
   return (
     <Head>
