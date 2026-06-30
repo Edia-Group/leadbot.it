@@ -7,7 +7,7 @@ export const TypebotLogo = (props: React.SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <rect width="40" height="40" rx="8" fill="#0042DA" />
+    <rect width="40" height="40" rx="8" fill="#0E5F52" />
     <text
       x="50%"
       y="55%"

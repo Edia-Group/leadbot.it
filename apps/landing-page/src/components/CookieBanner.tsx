@@ -34,7 +34,7 @@ export const CookieBanner = ({ onAccept, onDecline }: Props) => (
         <button
           type="button"
           onClick={onAccept}
-          className="text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl transition-colors whitespace-nowrap cursor-pointer"
+          className="text-sm font-semibold bg-[#0E5F52] hover:bg-[#0B4D42] text-white px-4 py-2 rounded-xl transition-colors whitespace-nowrap cursor-pointer"
         >
           Accetta tutti
         </button>

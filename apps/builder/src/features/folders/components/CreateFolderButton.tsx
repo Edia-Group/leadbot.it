@@ -27,7 +27,7 @@ export const CreateFolderButton = ({ isLoading, onClick }: Props) => {
         variant="outline-secondary"
         className="bg-gray-1"
       >
-        <FolderAddIcon className="text-blue-10" />
+        <FolderAddIcon className="text-[#0E5F52]" />
         <div className="flex items-center gap-2">
           <p>{t("folders.createFolderButton.label")}</p>
           {isFreePlan(workspace) && (

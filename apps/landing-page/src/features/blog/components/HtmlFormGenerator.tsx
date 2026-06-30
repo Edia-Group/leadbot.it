@@ -71,7 +71,7 @@ export const HtmlFormGenerator = () => {
           html += "    </select>\n";
           break;
         case "checkbox":
-          html += `    <input type="checkbox" class="h-4 w-4 text-blue-600" ${element.required ? "required" : ""}/>\n`;
+          html += `    <input type="checkbox" class="h-4 w-4 text-[#0E5F52]" ${element.required ? "required" : ""}/>\n`;
           break;
         default:
           html += `    <input type="${element.type}" class="w-full p-2 border rounded-md" ${element.required ? "required" : ""}/>\n`;
@@ -80,7 +80,7 @@ export const HtmlFormGenerator = () => {
       html += "  </div>\n";
     });
     html +=
-      '  <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Submit</button>\n';
+      '  <button type="submit" class="w-full bg-[#158974] text-white p-2 rounded-md hover:bg-[#0E5F52]">Submit</button>\n';
     html += "</form>";
     return html;
   };
@@ -288,7 +288,7 @@ const FormElement = ({
     <Card
       className={cx(
         "relative p-4 cursor-pointer hover:filter hover:brightness-95 transition-all",
-        isSelected && "border-blue-500",
+        isSelected && "border-[#0E5F52]",
       )}
       style={{ width: `${element.width || 100}%` }}
       onClick={onClick}
@@ -444,7 +444,7 @@ const PropertiesPanel = ({
             type="checkbox"
             checked={selectedElement.required || false}
             onChange={(e) => onUpdate({ required: e.target.checked })}
-            className="h-4 w-4 text-blue-600"
+            className="h-4 w-4 text-[#0E5F52]"
           />
           <label
             htmlFor="element-required"
@@ -609,7 +609,7 @@ const LivePreviewModal = ({
                   <input
                     id={element.id}
                     type="checkbox"
-                    className="h-4 w-4 text-blue-600"
+                    className="h-4 w-4 text-[#0E5F52]"
                     required={element.required}
                   />
                 ) : element.type === "phone" ? (

@@ -13,7 +13,7 @@ import { NucleoHero } from "./NucleoHero";
 import { PlatformBenefits } from "./PlatformBenefits";
 
 export const NucleoLanding = () => (
-  <div className="bg-[#f8fafc] text-[#0f172a]">
+  <div className="bg-[#F6F2EA] text-[#14231E]">
     <NucleoHero />
 
     <ChatbotModes />
@@ -22,13 +22,13 @@ export const NucleoLanding = () => (
 
     <section className="flex flex-col items-center gap-16 px-4 py-20 md:gap-24 md:py-28">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-[#2563eb]">
+        <p className="text-sm font-semibold uppercase tracking-widest text-[#0E5F52]">
           Builder visuale
         </p>
-        <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
           Dal primo blocco alla prima conversazione
         </h2>
-        <p className="mt-4 text-lg text-slate-500">
+        <p className="mt-4 text-lg text-[#586863]">
           Trascina, collega, pubblica. Vedi il risultato in tempo reale mentre
           costruisci il tuo chatbot.
         </p>
@@ -50,10 +50,10 @@ export const NucleoLanding = () => (
 
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-20 md:py-28">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-[#2563eb]">
+        <p className="text-sm font-semibold uppercase tracking-widest text-[#0E5F52]">
           Tre passi
         </p>
-        <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
           Lancia il tuo primo chatbot oggi
         </h2>
       </div>
@@ -64,21 +64,21 @@ export const NucleoLanding = () => (
       <Faq />
     </section>
 
-    <section id="demo" className="dark flex justify-center px-4 pb-8">
+    <section id="demo" className="flex justify-center px-4 pb-16 pt-4">
       <Cta buttonLabel="Inizia gratis">
         Pronto a trasformare visitatori in clienti con un chatbot che funziona
         con o senza AI?
       </Cta>
     </section>
 
-    <section className="border-t border-slate-200 bg-white py-10">
+    <section className="border-t border-[#E4DCCE] bg-white py-10">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 text-center">
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-[#586863]">
           Serve setup chiavi in mano per la tua azienda?
         </p>
         <a
           href="mailto:ciao@nucleoai.it"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] hover:text-[#1d4ed8]"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-[#0E5F52] hover:text-[#0B4D42]"
         >
           Prenota una demo di 30 minuti <ArrowRight className="size-4" />
         </a>

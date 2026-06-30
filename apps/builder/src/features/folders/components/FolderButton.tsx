@@ -108,7 +108,7 @@ const FolderButton = ({
           </Menu.Popup>
         </Menu.Root>
         <div className="flex flex-col items-center gap-4">
-          <Folder01SolidIcon className="size-10 text-blue-10" />
+          <Folder01SolidIcon className="size-10 text-[#0E5F52]" />
           <SingleLineEditable
             className="text-lg"
             defaultValue={folder.name === "" ? "New folder" : folder.name}

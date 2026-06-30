@@ -8,14 +8,14 @@ const channels = [
 ] as const;
 
 export const ChannelsSection = () => (
-  <section className="dark bg-[#0f172a] py-16 text-white">
+  <section className="dark bg-[#14231E] py-16 text-white">
     <div className="mx-auto max-w-6xl px-6">
       <div className="flex flex-col items-center gap-10 md:flex-row md:justify-between">
         <div className="max-w-md text-center md:text-left">
-          <h2 className="text-2xl font-extrabold md:text-3xl">
+          <h2 className="text-2xl font-semibold md:text-3xl">
             Un chatbot. Ogni canale.
           </h2>
-          <p className="mt-3 text-slate-300">
+          <p className="mt-3 text-[#9FC9BD]">
             Progetta una volta, distribuisci dove sono i tuoi clienti — sito,
             WhatsApp, link diretto e integrazioni.
           </p>
@@ -27,7 +27,7 @@ export const ChannelsSection = () => (
               className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm"
             >
               <p className="text-sm font-semibold">{channel.name}</p>
-              <p className="mt-0.5 text-xs text-slate-400">{channel.desc}</p>
+              <p className="mt-0.5 text-xs text-[#9AA197]">{channel.desc}</p>
             </div>
           ))}
         </div>

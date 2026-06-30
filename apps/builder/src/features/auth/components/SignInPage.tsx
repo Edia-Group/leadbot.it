@@ -16,7 +16,7 @@ export const SignInPage = ({ type }: Props) => {
   const isSignIn = type === "signin";
 
   return (
-    <div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-[#0f172a] px-4 py-12">
+    <div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden bg-[#14231E] px-4 py-12">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -39,7 +39,7 @@ export const SignInPage = ({ type }: Props) => {
 
         <div className="flex w-full flex-col gap-8 rounded-2xl border border-white/10 bg-white p-8 shadow-2xl shadow-black/30 md:p-10">
           <div className="flex flex-col gap-2 text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-[#0f172a]">
+            <h1 className="text-2xl font-bold tracking-tight text-[#14231E]">
               {isSignIn
                 ? t("auth.signin.heading")
                 : t("auth.register.heading")}

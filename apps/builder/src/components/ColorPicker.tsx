@@ -21,7 +21,7 @@ const colorsSelection: `#${string}`[] = [
   "#4A8BB2",
   "#9B74B7",
   "#C75F96",
-  "#0042DA",
+  "#0E5F52",
 ];
 
 type Props = {
