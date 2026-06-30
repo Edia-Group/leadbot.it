@@ -35,7 +35,7 @@ export const StandardIllustration = () => {
         rx="5"
         className="fill-gray-9"
       />
-      <rect x="49" y="189" width="402" height="262" rx="10" fill="#0042DA" />
+      <rect x="49" y="189" width="402" height="262" rx="10" fill="#0E5F52" />
 
       <motion.rect
         variants={animationVariants}

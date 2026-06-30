@@ -16,8 +16,8 @@
 }
 
 @theme {
-  --font-display: "Uxum Grotesque", sans-serif;
-  --font-sans: "Untitled Sans", sans-serif;
+  --font-display: "Spectral", ui-serif, Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
 
   --text-4xl: 2.5rem;
 
@@ -42,36 +42,55 @@
   --color-neutral-900: oklch(22.645% 0.00003 271.152);
   --color-neutral-950: oklch(15.907% 0.00002 271.152);
 
-  --color-orange-50: oklch(0.964 0.018 34.37);
-  --color-orange-100: oklch(0.921 0.042 38.21);
-  --color-orange-200: oklch(0.854 0.082 38.39);
-  --color-orange-300: oklch(0.784 0.13 38.34);
-  --color-orange-400: oklch(0.73 0.171 37.85);
-  --color-orange-500: oklch(0.682 0.211 36.62); /* Brand */
-  --color-orange-600: oklch(0.615 0.22 34.14);
-  --color-orange-700: oklch(0.491 0.173 34.71);
-  --color-orange-800: oklch(0.373 0.128 36.02);
-  --color-orange-900: oklch(0.232 0.073 40.01);
-  --color-orange-950: oklch(0.169 0.047 46.01);
+  /* NucleoAI brand — Teal ramp (the legacy "orange" brand scale is repurposed
+     so every brand usage across landing + builder flips to teal). */
+  --color-orange-50: #f2f9f6;
+  --color-orange-100: #e6f1eb;
+  --color-orange-200: #cde6dc;
+  --color-orange-300: #a6d2c3;
+  --color-orange-400: #5fa391;
+  --color-orange-500: #0e5f52; /* Brand — Teal 700 */
+  --color-orange-600: #0b4d42;
+  --color-orange-700: #093c33;
+  --color-orange-800: #07302a;
+  --color-orange-900: #06231e;
+  --color-orange-950: #041713;
+
+  /* NucleoAI warm accent — Honey/Amber */
+  --color-honey-50: #fdf6ea;
+  --color-honey-100: #f8ecd6;
+  --color-honey-200: #f1d9ac;
+  --color-honey-300: #e9c382;
+  --color-honey-400: #e0a24a; /* Accent */
+  --color-honey-500: #c9893a;
+  --color-honey-600: #9a6a1e;
+  --color-honey-700: #7a5417;
+
+  /* Warm neutrals from the design system */
+  --color-cream: #f6f2ea;
+  --color-cream-alt: #f1ece1;
+  --color-ink: #14231e;
+  --color-body: #2c3a34;
+  --color-sand: #e4dcce;
 
   --color-stone-250: oklch(0.896 0.004 52.5);
 }
 
 :root {
-  --background: var(--color-white);
-  --foreground: var(--color-stone-900);
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
   --card: var(--color-white);
-  --card-foreground: var(--color-stone-900);
+  --card-foreground: var(--color-ink);
   --popover: var(--color-white);
-  --popover-foreground: var(--color-stone-900);
-  --primary: var(--color-orange-500);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-orange-500); /* Teal #0E5F52 */
   --primary-foreground: var(--color-white);
-  --secondary: var(--color-stone-100);
-  --secondary-foreground: var(--color-stone-900);
-  --muted: var(--color-neutral-100);
-  --muted-foreground: var(--color-neutral-500);
-  --accent: var(--color-neutral-100);
-  --accent-foreground: var(--color-neutral-900);
+  --secondary: var(--color-cream-alt);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-cream-alt);
+  --muted-foreground: #586863;
+  --accent: var(--color-honey-400);
+  --accent-foreground: var(--color-ink);
   --destructive: var(--color-red-600);
   --destructive-foreground: var(--color-white);
   --info: ;
@@ -80,11 +99,11 @@
   --success-foreground: ;
   --warning: ;
   --warning-foreground: ;
-  --border: var(--color-stone-200);
-  --input: var(--color-stone-250);
+  --border: var(--color-sand);
+  --input: var(--color-sand);
   --ring: var(--primary);
 
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 }
 
 .dark {

@@ -15,22 +15,22 @@ export const ComparisonTable = () => (
   <section className="bg-white py-20 md:py-28">
     <div className="mx-auto max-w-4xl px-6">
       <div className="text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight text-[#0f172a] md:text-4xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-[#14231E] md:text-4xl">
           Perché non basta ChatGPT
         </h2>
-        <p className="mt-3 text-slate-500">
+        <p className="mt-3 text-[#586863]">
           ChatGPT è un assistente generico. NUCLEO è il chatbot che lavora sui
           tuoi canali, con i tuoi processi.
         </p>
       </div>
 
-      <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-        <div className="grid grid-cols-[1fr_100px_1fr] bg-[#0f172a] text-sm font-semibold text-white sm:grid-cols-[1fr_120px_1fr]">
+      <div className="mt-10 overflow-hidden rounded-2xl border border-[#E4DCCE] shadow-sm">
+        <div className="grid grid-cols-[1fr_100px_1fr] bg-[#14231E] text-sm font-semibold text-white sm:grid-cols-[1fr_120px_1fr]">
           <div className="px-4 py-4 sm:px-5">Funzionalità</div>
-          <div className="px-4 py-4 text-center text-slate-400 sm:px-5">
+          <div className="px-4 py-4 text-center text-[#9AA197] sm:px-5">
             ChatGPT
           </div>
-          <div className="px-4 py-4 text-center text-[#60a5fa] sm:px-5">
+          <div className="px-4 py-4 text-center text-[#E0A24A] sm:px-5">
             NUCLEO
           </div>
         </div>
@@ -38,17 +38,17 @@ export const ComparisonTable = () => (
           <div
             key={feature}
             className={`grid grid-cols-[1fr_100px_1fr] items-center text-sm sm:grid-cols-[1fr_120px_1fr] ${
-              index % 2 ? "bg-slate-50" : "bg-white"
+              index % 2 ? "bg-[#F6F2EA]" : "bg-white"
             }`}
           >
-            <div className="px-4 py-3.5 font-medium text-slate-800 sm:px-5">
+            <div className="px-4 py-3.5 font-medium text-[#14231E] sm:px-5">
               {feature}
             </div>
             <div className="flex justify-center px-4 py-3.5 sm:px-5">
               {chatgpt === false ? (
-                <XMark className="size-5 text-slate-300" />
+                <XMark className="size-5 text-[#9FC9BD]" />
               ) : (
-                <span className="text-center text-xs text-slate-500 sm:text-sm">
+                <span className="text-center text-xs text-[#586863] sm:text-sm">
                   {chatgpt}
                 </span>
               )}
@@ -59,7 +59,7 @@ export const ComparisonTable = () => (
               ) : (
                 <>
                   <Check className="size-5 shrink-0 text-emerald-600" />
-                  <span className="text-slate-600">{nucleo}</span>
+                  <span className="text-[#586863]">{nucleo}</span>
                 </>
               )}
             </div>

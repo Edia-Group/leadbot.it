@@ -16,7 +16,7 @@ export const NotFound = ({ children }: { children?: ReactNode }) => {
         </button>
         <Link
           to="/"
-          className="bg-cyan-600 text-white px-2 py-1 rounded-sm uppercase font-black text-sm"
+          className="bg-[#158974] text-white px-2 py-1 rounded-sm uppercase font-black text-sm"
         >
           Start Over
         </Link>

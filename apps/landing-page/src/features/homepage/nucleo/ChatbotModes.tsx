@@ -64,13 +64,13 @@ export const ChatbotModes = () => {
     <section className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-[#2563eb]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#0E5F52]">
             Scegli come lavora il tuo bot
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0f172a] md:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#14231E] md:text-4xl">
             Con AI, senza AI, o entrambi
           </h2>
-          <p className="mt-4 text-lg text-slate-500">
+          <p className="mt-4 text-lg text-[#586863]">
             Non tutti hanno bisogno di un LLM. NUCLEO ti lascia partire con
             flussi semplici e aggiungere l&apos;intelligenza artificiale solo
             quando crea valore reale.
@@ -86,8 +86,8 @@ export const ChatbotModes = () => {
               className={cn(
                 "rounded-full px-5 py-2.5 text-sm font-semibold transition",
                 activeIndex === index
-                  ? "bg-[#1e40af] text-white shadow-lg shadow-blue-900/20"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200",
+                  ? "bg-[#0E5F52] text-white shadow-lg shadow-[#093C33]/25"
+                  : "bg-[#F1ECE1] text-[#586863] hover:bg-[#E4DCCE]",
               )}
             >
               {mode.label}
@@ -105,26 +105,26 @@ export const ChatbotModes = () => {
             className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center"
           >
             <div className="order-2 lg:order-1">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#dbeafe] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#1e40af]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#E6F1EB] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#0E5F52]">
                 <activeMode.Icon className="size-3.5" />
                 {activeMode.badge}
               </span>
-              <h3 className="mt-4 text-2xl font-bold text-[#0f172a] md:text-3xl">
+              <h3 className="mt-4 text-2xl font-bold text-[#14231E] md:text-3xl">
                 {activeMode.title}
               </h3>
-              <p className="mt-3 text-slate-600">{activeMode.description}</p>
+              <p className="mt-3 text-[#586863]">{activeMode.description}</p>
               <ul className="mt-6 flex flex-col gap-3">
                 {activeMode.bullets.map((bullet) => (
                   <li
                     key={bullet}
-                    className="flex gap-3 text-sm text-slate-600 md:text-base"
+                    className="flex gap-3 text-sm text-[#586863] md:text-base"
                   >
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#2563eb]" />
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#0E5F52]" />
                     {bullet}
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm font-medium text-[#1e40af]">
+              <p className="mt-6 text-sm font-medium text-[#0E5F52]">
                 {activeMode.highlight}
               </p>
               <CtaButtonLink className="mt-8" size="lg" href={registerUrl}>
@@ -190,16 +190,16 @@ const ModePreview = ({ modeId }: { modeId: (typeof modes)[number]["id"] }) => {
   const preview = previews[modeId];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-linear-to-b from-slate-50 to-white p-6 shadow-xl shadow-slate-200/50">
-      <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
-        <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+    <div className="rounded-2xl border border-[#E4DCCE] bg-linear-to-b from-[#FBF8F1] to-white p-6 shadow-xl shadow-[#093C33]/10">
+      <div className="mb-4 flex items-center justify-between border-b border-[#E4DCCE] pb-3">
+        <span className="text-xs font-semibold uppercase tracking-wide text-[#9AA197]">
           Anteprima live
         </span>
         <span className="rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-800">
           Online
         </span>
       </div>
-      <p className="text-sm font-semibold text-slate-700">{preview.title}</p>
+      <p className="text-sm font-semibold text-[#2C3A34]">{preview.title}</p>
       <div className="mt-4 flex flex-col gap-3">
         {preview.steps.map((step, index) => (
           <div
@@ -207,15 +207,15 @@ const ModePreview = ({ modeId }: { modeId: (typeof modes)[number]["id"] }) => {
             className={cn(
               "max-w-[90%] rounded-2xl px-4 py-2.5 text-sm",
               step.role === "bot"
-                ? "self-start rounded-bl-md bg-[#1e40af] text-white"
-                : "self-end rounded-br-md bg-slate-200 text-slate-800",
+                ? "self-start rounded-bl-md bg-[#0E5F52] text-white"
+                : "self-end rounded-br-md bg-[#E0A24A] font-medium text-[#14231E]",
             )}
           >
             {step.text}
           </div>
         ))}
       </div>
-      <p className="mt-4 text-center text-xs text-slate-400">{preview.footer}</p>
+      <p className="mt-4 text-center text-xs text-[#9AA197]">{preview.footer}</p>
     </div>
   );
 };

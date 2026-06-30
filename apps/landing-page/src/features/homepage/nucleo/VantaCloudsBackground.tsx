@@ -26,12 +26,12 @@ export const VantaCloudsBackground = () => {
         minHeight: 200,
         minWidth: 200,
         speed: 0.9,
-        skyColor: 0x0b1220,
-        cloudColor: 0x1e3a8a,
-        cloudShadowColor: 0x0f172a,
-        sunColor: 0x3b82f6,
-        sunGlareColor: 0x2563eb,
-        sunlightColor: 0x60a5fa,
+        skyColor: 0x093c33,
+        cloudColor: 0x0e5f52,
+        cloudShadowColor: 0x07302a,
+        sunColor: 0xe0a24a,
+        sunGlareColor: 0xe0a24a,
+        sunlightColor: 0xbfe3d4,
       });
     };
 
@@ -47,7 +47,7 @@ export const VantaCloudsBackground = () => {
     <div
       ref={containerRef}
       aria-hidden
-      className="pointer-events-none absolute inset-0 bg-[#0b1220]"
+      className="pointer-events-none absolute inset-0 bg-[#093C33]"
     />
   );
 };

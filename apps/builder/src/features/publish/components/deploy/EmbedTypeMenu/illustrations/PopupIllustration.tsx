@@ -11,7 +11,7 @@ export const PopupIllustration = () => {
       className="light"
     >
       <rect width="500" height="500" rx="20" className="fill-gray-6" />
-      <rect x="105" y="77" width="290" height="352" rx="10" fill="#0042DA" />
+      <rect x="105" y="77" width="290" height="352" rx="10" fill="#0E5F52" />
       <motion.rect
         x="171"
         y="117"

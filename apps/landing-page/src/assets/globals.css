@@ -5,19 +5,19 @@
 
 @plugin "@tailwindcss/typography";
 
-/* LeadBot Color Palette */
+/* NucleoAI Color Palette */
 :root {
-  --leadbot-primary: #1e40af;
-  --leadbot-secondary: #3b82f6;
-  --leadbot-accent: #93c5fd;
-  --leadbot-neutral: #f1f5f9;
-  --leadbot-text: #1e293b;
-  --leadbot-text-light: #64748b;
+  --leadbot-primary: #0e5f52; /* Teal 700 — brand */
+  --leadbot-secondary: #158974; /* Teal 500 */
+  --leadbot-accent: #e0a24a; /* Honey — warm accent */
+  --leadbot-neutral: #f1ece1; /* Cream alt */
+  --leadbot-text: #14231e; /* Ink */
+  --leadbot-text-light: #586863; /* Muted */
 }
 
 @layer base {
   body {
-    @apply text-foreground bg-[#F1F5F9];
+    @apply text-foreground bg-[#F6F2EA];
     color: var(--leadbot-text);
   }
 
@@ -27,16 +27,18 @@
   }
 
   section:not(.dark) {
-    @apply bg-[#F1F5F9];
+    @apply bg-[#F6F2EA];
   }
 
   h1 {
-    @apply text-4xl md:text-6xl font-bold;
+    @apply text-4xl md:text-6xl font-medium;
     color: var(--leadbot-primary);
   }
 
-  .dark h1 {
-    color: var(--leadbot-accent);
+  .dark h1,
+  .dark h2,
+  .dark h3 {
+    color: #ffffff;
   }
 
   .dark .text-foreground\/60 {
@@ -119,11 +121,11 @@
     height: 200%;
     background: conic-gradient(
       from 179.91deg at 50% 50%,
-      #1e40af -72.48deg,
-      #3b82f6 44.64deg,
-      #93c5fd 145.15deg,
-      #1e40af 287.52deg,
-      #3b82f6 404.64deg
+      #0e5f52 -72.48deg,
+      #158974 44.64deg,
+      #e0a24a 145.15deg,
+      #0e5f52 287.52deg,
+      #158974 404.64deg
     );
     opacity: 0.4;
     mix-blend-mode: plus-lighter;

@@ -53,10 +53,10 @@ const managedPlans = [
 export const ManagedPlanCards = () => (
   <div className="flex w-full max-w-7xl flex-col gap-8">
     <div className="flex flex-col gap-3">
-      <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+      <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
         Piani chiavi in mano
       </h2>
-      <p className="max-w-3xl text-slate-600">
+      <p className="max-w-3xl text-[#586863]">
         Non hai tempo di configurare? Configuriamo noi chatbot, documenti,
         contatti e integrazioni. Setup una tantum + canone mensile flat.
       </p>
@@ -74,17 +74,17 @@ export const ManagedPlanCards = () => (
             className={
               plan.highlight
                 ? "bg-violet-400 text-white"
-                : "bg-[#1e40af] text-white"
+                : "bg-[#0E5F52] text-white"
             }
           >
             {plan.name}
           </PlanNamePill>
           <div className="flex flex-col items-center gap-2 px-4">
-            <h2 className="text-4xl font-extrabold">
+            <h2 className="text-4xl font-semibold">
               {plan.price} €
-              <span className="text-lg font-normal text-slate-500">/mese</span>
+              <span className="text-lg font-normal text-[#586863]">/mese</span>
             </h2>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-[#586863]">
               + {plan.setup} € setup una tantum
             </p>
           </div>

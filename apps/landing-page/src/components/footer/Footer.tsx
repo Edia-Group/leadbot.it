@@ -1,6 +1,5 @@
 import { LeadBotLogoFull } from "@/components/LeadBotLogo";
 import { TextLink } from "@/components/link";
-import gradientSeparatorSrc from "./assets/gradient-separator.png";
 
 const data = [
   {
@@ -73,8 +72,7 @@ const data = [
 
 export const Footer = () => {
   return (
-    <footer className="dark flex flex-col pb-12">
-      <img src={gradientSeparatorSrc} alt="separator" className="w-full h-2" />
+    <footer className="flex flex-col pb-12 border-t border-[#E4DCCE] bg-[#F6F2EA]">
       <div className="flex flex-col max-w-7xl mx-auto px-6 md:px-4 w-full">
         <div className="flex flex-col md:flex-row gap-12 py-12 items-start">
           <LeadBotLogoFull className="mt-1" />

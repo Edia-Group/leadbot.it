@@ -36,7 +36,7 @@ function RouteComponent() {
           <PricingHeading />
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold">Fai da te (self-serve)</h2>
-            <p className="text-slate-600 max-w-2xl">
+            <p className="text-[#586863] max-w-2xl">
               Il piano Gratis serve solo per provare. I piani a pagamento
               includono chat illimitate e tutto il necessario per andare live.
             </p>

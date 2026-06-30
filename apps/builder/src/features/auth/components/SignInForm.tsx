@@ -150,7 +150,7 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
                 />
                 <Button
                   type="submit"
-                  className="h-11 w-full bg-[#2563eb] font-semibold hover:bg-[#1d4ed8]"
+                  className="h-11 w-full bg-[#0E5F52] font-semibold hover:bg-[#1d4ed8]"
                   disabled={
                     ["loading", "authenticated"].includes(status) ||
                     authLoading ||
