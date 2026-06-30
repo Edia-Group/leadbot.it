@@ -45,6 +45,7 @@ export const Header = ({ isOpened = false, onOpen, onClose }: HeaderProps) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const [appearance, setAppearance] = useState<"light" | "dark">("dark");
   const { width: windowWidth, height: windowHeight } = useWindowSize();
+  const { pathname } = useLocation();
   const router = useRouter();
 
   useEffect(() => {
@@ -111,6 +112,14 @@ export const Header = ({ isOpened = false, onOpen, onClose }: HeaderProps) => {
         className="hidden md:flex"
         aria-label="Navigazione header mobile"
       />
+      {windowWidth &&
+        windowWidth < breakpoints.md &&
+        pathname === "/" &&
+        landingDemoBotPublicId && (
+          <div className="md:hidden">
+            <Bubble typebot={landingDemoBotPublicId} apiHost={viewerUrl} />
+          </div>
+        )}
     </header>
   );
 };

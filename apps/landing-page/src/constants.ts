@@ -12,7 +12,7 @@ export const viewerUrl = "https://viewer.nucleoai.it";
  * Public ID of the demo bot shown in the header bubble on the homepage.
  * Create & publish in the builder (Share → custom link) with this exact ID.
  */
-export const landingDemoBotPublicId = "nucleo-demo";
+export const landingDemoBotPublicId = "faq-ehpj0mm";
 // TODO(nucleo): puntare a repo/pagina LinkedIn NUCLEO quando esistono (ora link legacy leadbot)
 export const githubRepoUrl = "https://github.com/filipporomani/leadbot";
 export const linkedInUrl = "https://www.linkedin.com/company/leadbot";
