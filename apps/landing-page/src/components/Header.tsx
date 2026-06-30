@@ -11,8 +11,10 @@ import { LeadBotLogoFull } from "@/components/LeadBotLogo";
 import {
   breakpoints,
   dashboardUrl,
+  landingDemoBotPublicId,
   registerUrl,
   signinUrl,
+  viewerUrl,
 } from "@/constants";
 import { useWindowSize } from "@/features/homepage/hooks/useWindowSize";
 import { useIsAuthenticated } from "@/hooks/useIsAuthenticated";
@@ -285,7 +287,7 @@ const Desktop = React.forwardRef<
           </CtaButtonLink>
         )}
       </nav>
-      {isChatBubbleMounted && pathname === "/" && (
+      {isChatBubbleMounted && pathname === "/" && landingDemoBotPublicId && (
         <div
           className={cx(
             "flex transition-opacity",
@@ -293,7 +295,8 @@ const Desktop = React.forwardRef<
           )}
         >
           <Bubble
-            typebot="Leadbot-demo"
+            typebot={landingDemoBotPublicId}
+            apiHost={viewerUrl}
             theme={{
               position: "static",
               chatWindow: {

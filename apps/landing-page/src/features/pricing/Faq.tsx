@@ -40,6 +40,17 @@ const data = [
     ),
   },
   {
+    title: "Cosa include il piano gratuito?",
+    content: (
+      <>
+        Il piano Gratuito è pensato solo per{" "}
+        <span className="font-bold">provare NUCLEO</span>: 1 bot e 50 chat al
+        mese. Per andare in produzione con chat illimitate, più bot e funzioni
+        avanzate, passa a Starter o Pro.
+      </>
+    ),
+  },
+  {
     title: "Posso disdire o cambiare l'abbonamento in qualsiasi momento?",
     content: (
       <>

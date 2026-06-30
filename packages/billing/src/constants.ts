@@ -2,15 +2,19 @@ import { Plan } from "@typebot.io/prisma/enum";
 import type { Stripe } from "stripe";
 
 export const prices = {
-  [Plan.STARTER]: 39,
-  [Plan.PRO]: 89,
+  [Plan.STARTER]: 35,
+  [Plan.PRO]: 79,
 } as const;
 
 export const chatsLimits = {
-  [Plan.FREE]: 200,
+  [Plan.FREE]: 50,
   [Plan.STARTER]: 2000,
   [Plan.PRO]: 10000,
   [Plan.ENTERPRISE]: 100000,
+} as const;
+
+export const typebotsLimits = {
+  [Plan.FREE]: 1,
 } as const;
 
 export const seatsLimits = {

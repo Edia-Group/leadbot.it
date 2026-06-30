@@ -55,7 +55,8 @@ ARG BUILD_CONCURRENCY=1
 ARG NODE_HEAP_MB=4096
 ENV START_TARGET=node-server
 ENV SKIP_ENV_CHECK=true
-ENV NEXT_PUBLIC_VIEWER_URL=http://localhost
+ARG NEXT_PUBLIC_VIEWER_URL=https://viewer.nucleoai.it
+ENV NEXT_PUBLIC_VIEWER_URL=${NEXT_PUBLIC_VIEWER_URL}
 COPY --from=pruned /app/out/full/ .
 COPY bun.lock .
 COPY bunfig.toml .

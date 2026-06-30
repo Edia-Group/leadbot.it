@@ -11,7 +11,7 @@ import {
 export const FreePlanCard = ({ children }: { children?: React.ReactNode }) => (
   <PricingCardRoot>
     <PlanNamePill className="bg-stone-950 text-white absolute top-0">
-      Personale
+      Prova
     </PlanNamePill>
     <div className="flex flex-col gap-10 items-center">
       <h2>Gratis</h2>
@@ -20,7 +20,7 @@ export const FreePlanCard = ({ children }: { children?: React.ReactNode }) => (
 
     <PricingCardFooter>
       <CtaButtonLink href={registerUrl} variant="secondary" size="lg">
-        Inizia gratis
+        Prova gratis
       </CtaButtonLink>
     </PricingCardFooter>
   </PricingCardRoot>
@@ -28,7 +28,9 @@ export const FreePlanCard = ({ children }: { children?: React.ReactNode }) => (
 
 export const FreePlanPerksList = () => (
   <ul className="flex flex-col gap-3">
-    <PerkListItem>Bot illimitati</PerkListItem>
+    <PerkListItem>
+      <span className="font-bold">1 bot</span> per dare un&apos;occhiata
+    </PerkListItem>
     <PerkListItem>
       <span>
         <span className="font-bold">
@@ -37,9 +39,12 @@ export const FreePlanPerksList = () => (
         /mese
       </span>
     </PerkListItem>
+    <PerkListItem>Flussi guidati senza AI</PerkListItem>
     <PerkListItem>Integrazioni native</PerkListItem>
     <PerkListItem>Webhook</PerkListItem>
-    <PerkListItem>JavaScript e CSS personalizzati</PerkListItem>
     <PerkListItem>Supporto community e documentazione</PerkListItem>
+    <li className="text-sm text-muted-foreground">
+      Ideale solo per provare la piattaforma
+    </li>
   </ul>
 );

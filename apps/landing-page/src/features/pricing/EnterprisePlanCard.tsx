@@ -12,12 +12,15 @@ export const EnterprisePlanCard = () => (
       <div className="flex flex-col gap-3">
         <h2>Enterprise</h2>
         <p>
-          Ideale per agenzie e aziende che vogliono generare lead e automatizzare
-          il supporto clienti su larga scala
+          Per aziende che vogliono cervello interno ed esterno, integrazioni
+          gestionali e deployment dedicato — con chat illimitate e supporto su
+          misura.
         </p>
       </div>
       <ul className="flex flex-col gap-3 shrink-0">
-        <PerkListItem>Limite chat e postazioni personalizzati</PerkListItem>
+        <PerkListItem>Cervello documentale + bot interni ed esterni</PerkListItem>
+        <PerkListItem>Import documenti, contatti e knowledge base</PerkListItem>
+        <PerkListItem>Chat illimitate</PerkListItem>
         <PerkListItem>Contratto con SLA</PerkListItem>
         <PerkListItem>Supporto 24/7 con referente dedicato</PerkListItem>
         <PerkListItem>SSO e permessi di accesso granulari</PerkListItem>
