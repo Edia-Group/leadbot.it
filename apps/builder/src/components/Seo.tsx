@@ -1,3 +1,4 @@
+import { useTranslate } from "@tolgee/react";
 import { env } from "@typebot.io/env";
 import Head from "next/head";
 
@@ -11,7 +12,7 @@ const getOrigin = () => {
 
 export const Seo = ({
   title,
-  description = "The chatbot builder for professionals and local agencies who want more appointments without wasting time on the phone.",
+  description,
   imagePreviewUrl = `${getOrigin()}/images/og.png`,
 }: {
   title: string;
@@ -19,7 +20,10 @@ export const Seo = ({
   currentUrl?: string;
   imagePreviewUrl?: string;
 }) => {
+  const { t } = useTranslate();
   const formattedTitle = `${title} | NUCLEO`;
+  const resolvedDescription =
+    description ?? t("seo.defaultDescription");
 
   return (
     <Head>
@@ -28,9 +32,9 @@ export const Seo = ({
       <meta property="og:title" content={title} />
       <meta property="twitter:title" content={title} />
 
-      <meta name="description" content={description} />
-      <meta property="twitter:description" content={description} />
-      <meta property="og:description" content={description} />
+      <meta name="description" content={resolvedDescription} />
+      <meta property="twitter:description" content={resolvedDescription} />
+      <meta property="og:description" content={resolvedDescription} />
 
       <meta property="og:image" content={imagePreviewUrl} />
       <meta property="twitter:image" content={imagePreviewUrl} />

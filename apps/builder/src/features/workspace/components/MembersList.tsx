@@ -141,7 +141,7 @@ export const MembersList = () => {
       {!canInviteNewMember && (
         <Alert.Root>
           <InformationSquareIcon />
-          <Alert.Title>Unlock more members</Alert.Title>
+          <Alert.Title>{t("workspace.membersList.unlockBanner.title")}</Alert.Title>
           <Alert.Description>
             {t("workspace.membersList.unlockBanner.label")}
           </Alert.Description>
@@ -151,7 +151,7 @@ export const MembersList = () => {
               onClick={onChangePlanDialogOpen}
               size="sm"
             >
-              Upgrade
+              {t("upgrade")}
             </Button>
             <ChangePlanDialog
               isOpen={isChangePlanDialogOpen}

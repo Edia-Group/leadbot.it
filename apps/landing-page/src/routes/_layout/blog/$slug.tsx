@@ -54,19 +54,19 @@ function RouteComponent() {
               href="/blog"
               className="not-prose font-normal uppercase text-sm"
             >
-              ← All articles
+              ← Tutti gli articoli
             </TextLink>
             <span className="inline-flex gap-1 items-center not-prose text-sm">
               {post.updatedAt ? (
                 <time dateTime={post.postedAt} className="block ">
-                  Updated on {formatDate(post.updatedAt)}
+                  Aggiornato il {formatDate(post.updatedAt)}
                 </time>
               ) : (
                 <time dateTime={post.postedAt} className="block ">
-                  Published on {formatDate(post.postedAt ?? "")}
+                  Pubblicato il {formatDate(post.postedAt ?? "")}
                 </time>
               )}
-              • Written by
+              • Scritto da
               <img
                 src={author.imageSrc}
                 alt={author.name}
@@ -79,7 +79,7 @@ function RouteComponent() {
             </h1>
             {post.updatedAt && (
               <span className="inline-flex gap-1 items-center not-prose text-sm italic">
-                Updated on {formatDate(post.updatedAt)}
+                Aggiornato il {formatDate(post.updatedAt)}
               </span>
             )}
           </div>

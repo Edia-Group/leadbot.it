@@ -47,8 +47,10 @@ const App = ({ Component, pageProps }: AppProps) => {
     if (newPlan === Plan.STARTER || newPlan === Plan.PRO)
       toast({
         type: "success",
-        title: "Upgrade success!",
-        description: `Workspace upgraded to ${toTitleCase(newPlan)} 🎉`,
+        title: tolgee.t("pages.upgradeSuccess.title"),
+        description: tolgee.t("pages.upgradeSuccess.description", {
+          plan: toTitleCase(newPlan),
+        }),
       });
   }, [router.query.stripe]);
 

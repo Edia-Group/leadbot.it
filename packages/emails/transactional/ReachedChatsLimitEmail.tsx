@@ -14,6 +14,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   container,
@@ -54,7 +55,7 @@ export const ReachedChatsLimitEmail = ({ chatsLimit, url }: Props) => {
           </Button>
 
           <Hr style={hr} />
-          <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>
@@ -63,7 +64,7 @@ export const ReachedChatsLimitEmail = ({ chatsLimit, url }: Props) => {
 
 ReachedChatsLimitEmail.PreviewProps = {
   chatsLimit: 10000,
-  url: "https://typebot.io",
+  url: "https://app.nucleoai.it",
 } as Props;
 
 export default ReachedChatsLimitEmail;

@@ -14,6 +14,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText, brandSupportEmail } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   container,
@@ -67,7 +68,7 @@ export const BillingCycleResetEmail = ({
           </Button>
 
           <Hr style={hr} />
-          <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>
@@ -77,7 +78,7 @@ export const BillingCycleResetEmail = ({
 BillingCycleResetEmail.PreviewProps = {
   workspaceName: "My Workspace",
   totalChatsUsed: 15000,
-  url: "https://typebot.io",
+  url: "https://app.nucleoai.it",
 } as Props;
 
 export default BillingCycleResetEmail;

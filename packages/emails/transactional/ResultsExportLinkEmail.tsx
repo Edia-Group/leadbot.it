@@ -4,6 +4,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText } from "./brand";
 import { Logo } from "./components/Logo";
 import { container, footerText, hr, main, paragraph } from "./styles";
 
@@ -28,7 +29,7 @@ export const ResultsExportLinkEmail = ({ typebotName, fileUrl }: Props) => {
             You can download it <a href={fileUrl}>here</a>.
           </Text>
           <Hr style={hr} />
-          <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>
@@ -36,8 +37,8 @@ export const ResultsExportLinkEmail = ({ typebotName, fileUrl }: Props) => {
 };
 
 ResultsExportLinkEmail.PreviewProps = {
-  typebotName: "My Typebot",
-  fileUrl: "https://typebot.io/results.csv",
+  typebotName: "Il mio chatbot",
+  fileUrl: "https://app.nucleoai.it/results.csv",
 } as Props;
 
 export default ResultsExportLinkEmail;
