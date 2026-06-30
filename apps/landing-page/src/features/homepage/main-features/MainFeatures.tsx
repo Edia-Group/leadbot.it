@@ -67,9 +67,9 @@ const features = [
       sub: "crea il tuo flow di qualificazione in pochi click",
     },
     description:
-      "Il builder visuale di LeadBot ti permette di creare chatbot avanzati per qualificare i tuoi lead senza scrivere codice. Raccogli dati importanti come budget, zona, tipologia di servizio e sincronizza automaticamente con Google Calendar, WhatsApp Business e i tuoi strumenti preferiti. Personalizza colori, font e stili per riflettere il tuo brand.",
+      "Il builder visuale di NUCLEO ti permette di creare chatbot avanzati per qualificare i tuoi lead senza scrivere codice. Raccogli dati importanti come budget, zona, tipologia di servizio e sincronizza automaticamente con Google Calendar, WhatsApp Business e i tuoi strumenti preferiti. Personalizza colori, font e stili per riflettere il tuo brand.",
     link: {
-      src: "https://docs.leadbot.it/editor/blocks/integrations/google-calendar",
+      src: "https://docs.nucleoai.it/editor/blocks/integrations/google-calendar",
       text: "Vedi tutte le integrazioni",
     },
     video: {
@@ -83,9 +83,9 @@ const features = [
       sub: "distribuiscilo dove preferisci",
     },
     description:
-      "LeadBot è pensato per il mercato italiano: distribuisci il tuo chatbot su WhatsApp Business (la app più usata in Italia), embed sul tuo sito web, o tramite dominio personalizzato. Un solo flow, molteplici punti di contatto con i tuoi clienti. Perfetto per agenzie immobiliari, studi legali, commercialisti e professionisti.",
+      "NUCLEO è pensato per il mercato italiano: distribuisci il tuo chatbot su WhatsApp Business (la app più usata in Italia), embed sul tuo sito web, o tramite dominio personalizzato. Un solo flow, molteplici punti di contatto con i tuoi clienti. Perfetto per agenzie immobiliari, studi legali, commercialisti e professionisti.",
     link: {
-      src: "https://docs.leadbot.it/deploy/whatsapp/overview",
+      src: "https://docs.nucleoai.it/deploy/whatsapp/overview",
       text: "Scopri di più",
     },
     video: {
@@ -99,7 +99,7 @@ const features = [
       sub: "analizza e converti meglio",
     },
     description:
-      "Raccogli i risultati in tempo reale e usa l'analytics di LeadBot per migliorare le conversioni. Monitora tassi di completamento, punti di abbandono ed esporta i dati in Excel per analisi approfondite. Ricevi notifiche istantanee quando un lead qualificato completa il flow e segui i tuoi clienti con i reminder automatici.",
+      "Raccogli i risultati in tempo reale e usa l'analytics di NUCLEO per migliorare le conversioni. Monitora tassi di completamento, punti di abbandono ed esporta i dati in Excel per analisi approfondite. Ricevi notifiche istantanee quando un lead qualificato completa il flow e segui i tuoi clienti con i reminder automatici.",
     video: {
       src: realTimeResultVideoSrc,
     },

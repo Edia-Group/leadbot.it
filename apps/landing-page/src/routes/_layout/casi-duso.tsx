@@ -6,9 +6,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/_layout/casi-duso")({
   head: () => ({
     meta: createMetaTags({
-      title: "Casi d'uso | LeadBot",
+      title: "Casi d'uso | NUCLEO",
       description:
-        "Come professionisti e PMI italiane usano LeadBot per qualificare lead, fissare appuntamenti e rispondere ai clienti in automatico, anche su WhatsApp.",
+        "Come professionisti e PMI italiane usano NUCLEO per qualificare lead, fissare appuntamenti e rispondere ai clienti in automatico, anche su WhatsApp.",
       imagePath: "/images/default-og.png",
       path: "/casi-duso",
     }),
@@ -65,7 +65,7 @@ function RouteComponent() {
         <div className="flex flex-col gap-6 max-w-2xl">
           <h1>Casi d'uso</h1>
           <p className="text-xl text-muted-foreground">
-            LeadBot aiuta professionisti e piccole imprese italiane a generare
+            NUCLEO aiuta professionisti e piccole imprese italiane a generare
             più clienti e a togliersi di dosso le attività ripetitive. Ecco
             come.
           </p>

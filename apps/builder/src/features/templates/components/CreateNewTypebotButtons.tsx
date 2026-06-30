@@ -75,7 +75,7 @@ export const CreateNewTypebotButtons = () => {
       createTypebot({
         workspaceId: workspace.id,
         typebot: {
-          name: t("Leadbots.defaultName"),
+          name: t("NUCLEOs.defaultName"),
           folderId,
         },
       });

@@ -18,7 +18,7 @@ export const LeadBotLogo = (props: React.SVGProps<SVGSVGElement>) => (
       fontWeight="bold"
       fontFamily="Arial, sans-serif"
     >
-      LB
+      N
     </text>
   </svg>
 );

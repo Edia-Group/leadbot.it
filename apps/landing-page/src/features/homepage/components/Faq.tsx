@@ -13,9 +13,9 @@ const data = [
       "Quali sono i piani tariffari e quali funzionalità sono incluse nel piano gratuito?",
     content: (
       <>
-        LeadBot offre piani tariffari flessibili per adattarsi a liberi
+        NUCLEO offre piani tariffari flessibili per adattarsi a liberi
         professionisti, startup e grandi aziende. Il piano{" "}
-        <span className="font-bold">Gratuito</span> include LeadBot illimitati,
+        <span className="font-bold">Gratuito</span> include NUCLEO illimitati,
         200 chat al mese, integrazioni native, webhook, Javascript e CSS
         personalizzati. <br />
         <br /> Per maggiori dettagli sui nostri piani Starter e Pro, consulta la{" "}
@@ -25,11 +25,11 @@ const data = [
   },
   {
     title:
-      "Quanto è facile integrare LeadBot con i miei sistemi e piattaforme esistenti?",
+      "Quanto è facile integrare NUCLEO con i miei sistemi e piattaforme esistenti?",
     content: (
       <>
-        Integrare LeadBot con i tuoi sistemi è semplicissimo. Forniamo
-        istruzioni chiare passo-passo per guidarti nel processo. LeadBot
+        Integrare NUCLEO con i tuoi sistemi è semplicissimo. Forniamo
+        istruzioni chiare passo-passo per guidarti nel processo. NUCLEO
         supporta una vasta gamma di piattaforme, tra cui WhatsApp Business
         (fondamentale per il mercato italiano), WordPress, Shopify, Notion,
         Webflow e molte altre.
@@ -38,13 +38,13 @@ const data = [
   },
   {
     title:
-      "Che tipo di funzionalità di Intelligenza Artificiale offre LeadBot?",
+      "Che tipo di funzionalità di Intelligenza Artificiale offre NUCLEO?",
     content: (
       <>
-        LeadBot è agnostico rispetto ai fornitori di IA, offrendoti la
+        NUCLEO è agnostico rispetto ai fornitori di IA, offrendoti la
         flessibilità di connetterti con qualsiasi provider (come OpenAI o
         Mistral). A differenza dei concorrenti che ti vincolano a sistemi
-        proprietari, LeadBot ti dà gli strumenti per integrare i servizi IA che
+        proprietari, NUCLEO ti dà gli strumenti per integrare i servizi IA che
         preferisci, mantenendo il pieno controllo sui dati e sui costi.
       </>
     ),
@@ -54,7 +54,7 @@ const data = [
       "Che tipo di supporto e risorse sono disponibili se ho bisogno di aiuto?",
     content: (
       <>
-        Se riscontri problemi o hai bisogno di assistenza, LeadBot offre diverse
+        Se riscontri problemi o hai bisogno di assistenza, NUCLEO offre diverse
         opzioni:
         <ol className="list-decimal list-inside flex flex-col gap-6 py-6">
           <li>
@@ -76,10 +76,10 @@ const data = [
     ),
   },
   {
-    title: "Quanto è sicuro LeadBot e come gestite la privacy dei dati?",
+    title: "Quanto è sicuro NUCLEO e come gestite la privacy dei dati?",
     content: (
       <p>
-        LeadBot è certificato ISO 27001, a dimostrazione del nostro impegno nel
+        NUCLEO è certificato ISO 27001, a dimostrazione del nostro impegno nel
         mantenere i più alti standard di sicurezza delle informazioni. Il nostro
         principio guida è raccogliere solo i dati necessari per fornirti il
         miglior servizio, nel pieno rispetto del GDPR.

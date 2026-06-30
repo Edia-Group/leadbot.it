@@ -6,7 +6,7 @@ import "@/assets/styles/custom.css";
 import "@/assets/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "LeadBot - Chatbot Flow per Professionisti",
+  title: "NUCLEO - Chatbot Flow per Professionisti",
   description:
     "Crea chatbot intelligenti per qualificare lead, fissare appuntamenti e gestire follow-up automatici. Pensato per professionisti e agenzie italiane.",
   icons: {

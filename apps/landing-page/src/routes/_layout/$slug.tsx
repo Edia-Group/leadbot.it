@@ -22,7 +22,7 @@ export const Route = createFileRoute("/_layout/$slug")({
     meta: loaderData
       ? [
           ...createMetaTags({
-            title: `${loaderData?.post.title} | Leadbot`,
+            title: `${loaderData?.post.title} | NUCLEO`,
             description: loaderData.post.description,
             imagePath: "/images/default-og.png",
             path: `/${loaderData.post._meta.path}`,

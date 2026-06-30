@@ -18,13 +18,13 @@ export const getAndParseOssFriends = createServerFn().handler(async () => {
       }),
     )
     .parse(data.data)
-    .filter((friend) => friend.name !== "Leadbot");
+    .filter((friend) => friend.name !== "NUCLEO");
 });
 
 export const Route = createFileRoute("/_layout/oss-friends")({
   head: () => ({
     meta: createMetaTags({
-      title: "OSS Friends | Leadbot",
+      title: "OSS Friends | NUCLEO",
       description:
         "We love open-source and we are proud to support these amazing projects.",
       imagePath: "/images/default-og.png",

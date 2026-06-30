@@ -2,16 +2,17 @@ export const breakpoints = {
   md: 768,
 };
 
-export const currentBaseUrl = "https://leadbot.it";
-export const signinUrl = "https://app.leadbot.it/signin";
-export const registerUrl = `https://app.leadbot.it/register`;
-export const dashboardUrl = `https://app.leadbot.it/leadbots`;
+export const currentBaseUrl = "https://nucleoai.it";
+export const signinUrl = "https://app.nucleoai.it/signin";
+export const registerUrl = `https://app.nucleoai.it/register`;
+export const dashboardUrl = `https://app.nucleoai.it/leadbots`;
+// TODO(nucleo): puntare a repo/pagina LinkedIn NUCLEO quando esistono (ora link legacy leadbot)
 export const githubRepoUrl = "https://github.com/filipporomani/leadbot";
 export const linkedInUrl = "https://www.linkedin.com/company/leadbot";
 export const discordUrl = "https://discord.gg/typebot";
-export const docsUrl = "https://docs.leadbot.it";
+export const docsUrl = "https://docs.nucleoai.it";
 export const howToGetHelpUrl = `${docsUrl}/guides/how-to-get-help`;
-export const enterpriseLeadFormUrl = "https://leadbot.it/enterprise-lead-form";
+export const enterpriseLeadFormUrl = "https://nucleoai.it/enterprise-lead-form";
 
 export const legacyRedirects = {
   "/leadbot-lib": "https://unpkg.com/leadbot-js@2.0.21/dist/index.umd.min.js",

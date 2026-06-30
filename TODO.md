@@ -1,4 +1,4 @@
-# LeadBot MVP - Lista Priorità
+# NUCLEO MVP - Lista Priorità
 
 Data ultimo aggiornamento: 2026-06-18
 
@@ -28,15 +28,15 @@ Data ultimo aggiornamento: 2026-06-18
 
 ## Bassa priorità / post-MVP
 
-- [ ] Aggiornare GitHub Actions release workflow da `baptistearno/typebot-*` a registry LeadBot
+- [ ] Aggiornare GitHub Actions release workflow da `baptistearno/typebot-*` a registry NUCLEO
 - [ ] Osservabilità: structured logging, metriche (uptime, latenza)
 - [ ] WhatsApp Business API: documentare variabili d'ambiente e setup
-- [ ] Docs (`apps/docs`) tradotte e aggiornate per branding LeadBot
+- [ ] Docs (`apps/docs`) tradotte e aggiornate per branding NUCLEO
 - [ ] Landing page copy italiano finalizzata con prezzi e template specifici
 
 ## Completati
 
-- [x] Rebranding completo Typebot → LeadBot
+- [x] Rebranding completo Typebot → NUCLEO
 - [x] Localizzazione italiana UI builder e viewer
 - [x] Redis reso obbligatorio nel compose (già presente)
 - [x] Sentry/telemetria rimossi per privacy

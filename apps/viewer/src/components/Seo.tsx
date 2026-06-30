@@ -45,19 +45,19 @@ export const SEO = ({
         name="description"
         content={
           description ??
-          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with LeadBot."
+          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with NUCLEO."
         }
       />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url ?? "https://bot.leadbot.it"} />
+      <meta property="og:url" content={url ?? "https://bot.nucleoai.it"} />
       <meta property="og:title" content={title ?? typebotName} />
       <meta property="og:site_name" content={title ?? typebotName} />
       <meta
         property="og:description"
         content={
           description ??
-          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with LeadBot."
+          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with NUCLEO."
         }
       />
       <meta
@@ -70,13 +70,13 @@ export const SEO = ({
       />
 
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url ?? "https://bot.leadbot.it"} />
+      <meta property="twitter:url" content={url ?? "https://bot.nucleoai.it"} />
       <meta property="twitter:title" content={title ?? typebotName} />
       <meta
         property="twitter:description"
         content={
           description ??
-          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with LeadBot."
+          "Build beautiful conversational flows and embed them directly in your applications. Automate your leads and appointments with NUCLEO."
         }
       />
       <meta

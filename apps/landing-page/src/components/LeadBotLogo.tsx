@@ -38,7 +38,7 @@ export const LeadBotLogoFull = ({ className }: { className?: string }) => (
       </svg>
     </div>
     <span className="font-bold text-2xl tracking-tight text-[#1E40AF] dark:text-white">
-      Leadbot.it
+      NUCLEO
     </span>
   </div>
 );

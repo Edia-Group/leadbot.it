@@ -1,0 +1,18 @@
+{
+  "name": "@typebot.io/workflow",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "NUCLEO Motore Workflow - if-this-then-that rules engine + async job actions",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@typebot.io/tsconfig": "workspace:*",
+    "@types/node": "^22.9.0"
+  }
+}

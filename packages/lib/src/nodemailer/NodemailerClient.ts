@@ -66,7 +66,7 @@ export const NodemailerClientLayer = Layer.unwrapEffect(
         },
       },
       {
-        from: Option.getOrElse(smtpConfig.from, () => "noreply@leadbot.it"),
+        from: Option.getOrElse(smtpConfig.from, () => "noreply@nucleoai.it"),
       },
     );
 

@@ -36,7 +36,7 @@ const cards = [
     Icon: UsersIcon,
     title: "Collaborazione",
     description:
-      "Lavora in team: invita i tuoi collaboratori a creare e gestire i LeadBot insieme a te.",
+      "Lavora in team: invita i tuoi collaboratori a creare e gestire i bot insieme a te.",
     rotateCoeff: 12,
   },
   {
@@ -57,7 +57,7 @@ const cards = [
     Icon: ZapIcon,
     title: "Dominio personalizzato",
     description:
-      "Collega il tuo LeadBot all'URL personalizzato che preferisci.",
+      "Collega il tuo bot all'URL personalizzato che preferisci.",
     rotateCoeff: 2,
   },
   {

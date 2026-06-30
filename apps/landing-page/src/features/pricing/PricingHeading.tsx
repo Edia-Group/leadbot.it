@@ -5,7 +5,7 @@ export const PricingHeading = () => (
       Che tu sia un{" "}
       <span className="text-primary font-bold">professionista</span>, una{" "}
       <span className="text-violet-500 font-bold">startup in crescita</span> o{" "}
-      <span className="font-bold">un'agenzia</span>, Leadbot è qui per aiutarti
+      <span className="font-bold">un'agenzia</span>, NUCLEO è qui per aiutarti
       a creare chatbot ad alte prestazioni al giusto prezzo. Paga solo per
       quello che usi.
     </p>
