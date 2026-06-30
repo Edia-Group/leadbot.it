@@ -261,6 +261,18 @@ const Desktop = React.forwardRef<
         className,
       )}
     >
+      <Link
+        to="/"
+        aria-label="NucleoAI - home"
+        className={cx(
+          "mr-2",
+          pathname === "/" || appearance === "dark"
+            ? "dark bg-transparent"
+            : "",
+        )}
+      >
+        <LeadBotLogoFull />
+      </Link>
       <nav
         ref={ref}
         className={cx(

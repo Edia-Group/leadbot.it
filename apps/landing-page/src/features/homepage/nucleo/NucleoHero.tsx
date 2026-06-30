@@ -14,7 +14,7 @@ export const NucleoHero = () => (
     <div className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-36 text-center md:pb-32 md:pt-40">
       <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#093C33]/40 px-4 py-1.5 text-sm font-medium text-[#BFE3D4] backdrop-blur-md">
         <NucleoMark className="size-4" />
-        Chatbot per PMI italiane — con o senza AI
+        Chatbot per PMI italiane
       </span>
 
       <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight drop-shadow-sm md:text-6xl md:leading-[1.05]">

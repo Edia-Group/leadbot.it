@@ -26,8 +26,8 @@ export const LeadBotLogo = ({
 
 export const LeadBotLogoFull = ({ className }: { className?: string }) => (
   <div className={`flex items-center gap-2.5 ${className}`}>
-    <NucleoMark className="size-7 shrink-0 text-[#0E5F52] dark:text-white" />
-    <span className="font-display text-2xl font-semibold tracking-tight text-[#14231E] dark:text-white">
+    <NucleoMark className="size-9 shrink-0 text-[#0E5F52] dark:text-white" />
+    <span className="font-display text-3xl font-semibold tracking-tight text-[#14231E] dark:text-white">
       Nucleo<span className="text-[#0E5F52] dark:text-[#BFE3D4]">AI</span>
     </span>
   </div>
