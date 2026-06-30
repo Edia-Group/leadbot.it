@@ -39,7 +39,7 @@ export const Cta = ({
           {buttonLabel}
         </CtaButtonLink>
         <p className="text-muted-foreground text-center">
-          Nessuna carta richiesta. Piano gratuito generoso.
+          Nessuna carta richiesta. 1 bot e 50 chat per provare.
         </p>
       </div>
     </div>

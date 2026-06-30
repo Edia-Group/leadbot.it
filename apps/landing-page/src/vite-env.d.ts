@@ -42,3 +42,28 @@ declare module "*.webp?url" {
   const url: string;
   export default url;
 }
+
+declare module "vanta/dist/vanta.clouds.min.js" {
+  import type * as THREE from "three";
+
+  type VantaCloudsOptions = {
+    el: HTMLElement | string;
+    THREE: typeof THREE;
+    mouseControls?: boolean;
+    touchControls?: boolean;
+    gyroControls?: boolean;
+    minHeight?: number;
+    minWidth?: number;
+    speed?: number;
+    skyColor?: number;
+    cloudColor?: number;
+    cloudShadowColor?: number;
+    sunColor?: number;
+    sunGlareColor?: number;
+    sunlightColor?: number;
+  };
+
+  export default function CLOUDS(
+    options: VantaCloudsOptions,
+  ): { destroy: () => void };
+}

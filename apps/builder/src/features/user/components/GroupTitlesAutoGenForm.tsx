@@ -5,6 +5,7 @@ import { Field } from "@typebot.io/ui/components/Field";
 import { MoreInfoTooltip } from "@typebot.io/ui/components/MoreInfoTooltip";
 import { defaultGroupTitleGenPrompt } from "@typebot.io/user/constants";
 import type { GroupTitlesAutoGeneration } from "@typebot.io/user/schemas";
+import { useTranslate } from "@tolgee/react";
 import { useState } from "react";
 import { BasicAutocompleteInput } from "@/components/inputs/BasicAutocompleteInput";
 import { BasicSelect } from "@/components/inputs/BasicSelect";
@@ -26,6 +27,7 @@ export const GroupTitlesAutoGenForm = ({
   values: { credentialsId, provider, prompt, model },
   onChange,
 }: Props) => {
+  const { t } = useTranslate();
   const [isCredsDialogOpen, setIsCredsDialogOpen] = useState(false);
   const { blockDef, actionDef } = useForgedBlock({
     nodeType: provider as BlockV6["type"],
@@ -54,9 +56,11 @@ export const GroupTitlesAutoGenForm = ({
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2">
           <Field.Root className="flex-row items-center">
-            <Field.Label>Provider:</Field.Label>
+            <Field.Label>
+              {t("account.preferences.groupTitlesAutoGeneration.provider.label")}
+            </Field.Label>
             <BasicSelect
-              placeholder="Select"
+              placeholder={t("select")}
               items={Object.values(forgedBlocks)
                 .filter((block) => block.actions.some((a) => a.aiGenerate))
                 .map((block) => ({
@@ -115,13 +119,15 @@ export const GroupTitlesAutoGenForm = ({
               />
             )}
             <MoreInfoTooltip>
-              We recommend choosing a small model for this feature
+              {t("account.preferences.groupTitlesAutoGeneration.modelTooltip")}
             </MoreInfoTooltip>
           </div>
         )}
       </div>
       <Field.Root>
-        <Field.Label>Prompt:</Field.Label>
+        <Field.Label>
+          {t("account.preferences.groupTitlesAutoGeneration.prompt.label")}
+        </Field.Label>
         <Field.Control
           render={(props) => (
             <DebouncedTextarea

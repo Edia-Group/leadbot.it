@@ -15,9 +15,11 @@ const data = [
       <>
         NUCLEO offre piani tariffari flessibili per adattarsi a liberi
         professionisti, startup e grandi aziende. Il piano{" "}
-        <span className="font-bold">Gratuito</span> include NUCLEO illimitati,
-        200 chat al mese, integrazioni native, webhook, Javascript e CSS
-        personalizzati. <br />
+        <span className="font-bold">Gratuito</span> include{" "}
+        <span className="font-bold">1 bot</span> e{" "}
+        <span className="font-bold">50 chat al mese</span> — solo per dare
+        un&apos;occhiata e provare la piattaforma. Integrazioni native, webhook
+        e personalizzazione base incluse. <br />
         <br /> Per maggiori dettagli sui nostri piani Starter e Pro, consulta la{" "}
         <TextLink to="/pricing">Pagina dei Prezzi</TextLink>.
       </>
@@ -41,11 +43,15 @@ const data = [
       "Che tipo di funzionalità di Intelligenza Artificiale offre NUCLEO?",
     content: (
       <>
-        NUCLEO è agnostico rispetto ai fornitori di IA, offrendoti la
-        flessibilità di connetterti con qualsiasi provider (come OpenAI o
-        Mistral). A differenza dei concorrenti che ti vincolano a sistemi
-        proprietari, NUCLEO ti dà gli strumenti per integrare i servizi IA che
-        preferisci, mantenendo il pieno controllo sui dati e sui costi.
+        NUCLEO è agnostico rispetto ai fornitori di IA (OpenAI, Mistral, ecc.)
+        e puoi usare il chatbot anche <span className="font-bold">senza AI</span>
+        , con soli flussi guidati.
+        <br />
+        <br />
+        Con l&apos;AI attiva, carichi documenti aziendali e crei un{" "}
+        <span className="font-bold">cervello interno</span> per il team e/o un{" "}
+        <span className="font-bold">cervello esterno</span> per clienti su sito
+        e WhatsApp — stesse fonti, permessi diversi.
       </>
     ),
   },

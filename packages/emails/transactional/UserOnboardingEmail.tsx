@@ -12,6 +12,7 @@ import { render } from "@react-email/render";
 import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
+import { brandFooterText, brandName, brandWebsiteUrl } from "../transactional/brand";
 import { bodyText, container, footerText, main } from "./styles";
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
 export const UserOnboardingEmail = ({ unsubscribeUrl }: Props) => (
   <Html>
     <Head />
-    <Preview>Welcome to Typebot!</Preview>
+    <Preview>Benvenuto su {brandName}!</Preview>
     <Body style={main}>
       <Container
         align="left"
@@ -33,45 +34,34 @@ export const UserOnboardingEmail = ({ unsubscribeUrl }: Props) => (
         }}
       >
         <Text style={bodyText}>
-          Hi,
+          Ciao,
           <br />
           <br />
-          Thanks for trying out Typebot! I&apos;m Baptiste, the founder. 🙌
+          Grazie per esserti registrato su {brandName}! 🙌
           <br />
           <br />
-          I&apos;ve created Typebot because I think it should be easy to create
-          beautiful and engaging chat experiences.
+          {brandName} è il sistema operativo AI per PMI: chatbot, automazioni,
+          documenti aziendali e workflow in un&apos;unica piattaforma.
           <br />
           <br />
-          Typebot has been designed to give you all the freedom you need to
-          create the perfect bots for your business while still being super easy
-          to use.
+          Per iniziare, accedi alla dashboard e crea il tuo primo chatbot:
+          <br />
+          <Link href="https://app.nucleoai.it">https://app.nucleoai.it</Link>
           <br />
           <br />
-          Watch this quick 5-minute overview video to get started:
-          <br />
-          <Link href="https://www.youtube.com/watch?v=jp3ggg_42-M">
-            https://www.youtube.com/watch?v=jp3ggg_42-M
-          </Link>
+          Hai domande? Scrivici da{" "}
+          <Link href={brandWebsiteUrl}>{brandWebsiteUrl}</Link>.
           <br />
           <br />
-          Join our community on Discord to connect with others and get instant
-          help:
+          A presto,
           <br />
-          <Link href="https://typebot.io/discord">
-            https://typebot.io/discord
-          </Link>
-          <br />
-          <br />
-          See you soon!
-          <br />
-          <br />
-          Baptiste.
+          Il team {brandName}
         </Text>
         <Hr />
+        <Text style={{ ...footerText, marginTop: "8px" }}>{brandFooterText}</Text>
         {unsubscribeUrl ? (
           <Text style={{ ...footerText, marginTop: "24px" }}>
-            <Link href={unsubscribeUrl}>Click here to unsubscribe</Link>
+            <Link href={unsubscribeUrl}>Annulla iscrizione</Link>
           </Text>
         ) : null}
       </Container>
@@ -80,7 +70,7 @@ export const UserOnboardingEmail = ({ unsubscribeUrl }: Props) => (
 );
 
 UserOnboardingEmail.PreviewProps = {
-  unsubscribeUrl: "https://typebot.io/emails/unsubscribe",
+  unsubscribeUrl: "https://nucleoai.it/emails/unsubscribe",
 } satisfies Props;
 
 export default UserOnboardingEmail;

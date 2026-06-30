@@ -23,44 +23,11 @@ const data = [
         label: "Blog",
         to: "/blog",
       },
-    ],
-  },
-  {
-    title: "Blog",
-    links: [
       {
-        label: "Chatbot per Generazione Lead",
+        label: "Chatbot per generazione lead",
         to: "/blog/$slug",
         params: {
           slug: "lead-generation-chatbot",
-        },
-      },
-      {
-        label: "Miglior Chatbot Builder",
-        to: "/blog/$slug",
-        params: {
-          slug: "best-chatbot-builder",
-        },
-      },
-      {
-        label: "Creare Chatbot WhatsApp",
-        to: "/blog/$slug",
-        params: {
-          slug: "create-whatsapp-chatbot",
-        },
-      },
-      {
-        label: "Chatbot per FAQ",
-        to: "/blog/$slug",
-        params: {
-          slug: "faq-chatbot",
-        },
-      },
-      {
-        label: "Alternativa a Landbot",
-        to: "/blog/$slug",
-        params: {
-          slug: "landbot-alternative",
         },
       },
     ],
@@ -84,6 +51,13 @@ const data = [
         to: "/$slug",
         params: {
           slug: "privacy-policy",
+        },
+      },
+      {
+        label: "Cookie Policy",
+        to: "/$slug",
+        params: {
+          slug: "cookie-policy",
         },
       },
       {

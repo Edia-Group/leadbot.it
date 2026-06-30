@@ -9,6 +9,7 @@ import { Dialog } from "@typebot.io/ui/components/Dialog";
 import { useCallback, useEffect, useState } from "react";
 import { useWorkspace } from "@/features/workspace/WorkspaceProvider";
 import { toast } from "@/lib/toast";
+import { getTemplateTranslation } from "../getTemplateI18nPrefix";
 import type { TemplateProps } from "../types";
 
 type Props = {
@@ -46,11 +47,11 @@ export const TemplatesDialog = ({
         });
       setTypebot({
         ...(data as Typebot),
-        name: template.name,
+        name: getTemplateTranslation(t, template.slug, "name", template.name),
         workspaceId: workspace.id,
       });
     },
-    [workspace?.id],
+    [workspace?.id, t],
   );
 
   useEffect(() => {
@@ -60,7 +61,14 @@ export const TemplatesDialog = ({
 
   const onUseThisTemplateClick = async () => {
     if (!typebot) return;
-    onTypebotChoose(typebot, { fromTemplate: selectedTemplate.name });
+    onTypebotChoose(typebot, {
+      fromTemplate: getTemplateTranslation(
+        t,
+        selectedTemplate.slug,
+        "name",
+        selectedTemplate.name,
+      ),
+    });
   };
 
   return (
@@ -89,7 +97,14 @@ export const TemplatesDialog = ({
                   >
                     <div className="flex items-center gap-2 overflow-hidden text-sm w-full">
                       <p>{template.emoji}</p>
-                      <p>{template.name}</p>
+                      <p>
+                        {getTemplateTranslation(
+                          t,
+                          template.slug,
+                          "name",
+                          template.name,
+                        )}
+                      </p>
                       {template.isNew && (
                         <Badge colorScheme="orange" className="shrink-0">
                           {t("templates.modal.menuHeading.new.tag")}
@@ -120,7 +135,14 @@ export const TemplatesDialog = ({
                   >
                     <div className="flex items-center gap-2 overflow-hidden text-sm w-full">
                       <p>{template.emoji}</p>
-                      <p>{template.name}</p>
+                      <p>
+                        {getTemplateTranslation(
+                          t,
+                          template.slug,
+                          "name",
+                          template.name,
+                        )}
+                      </p>
                       {template.isNew && (
                         <Badge colorScheme="orange" className="shrink-0">
                           {t("templates.modal.menuHeading.new.tag")}
@@ -151,7 +173,14 @@ export const TemplatesDialog = ({
                   >
                     <div className="flex items-center gap-2 overflow-hidden text-sm w-full">
                       <p>{template.emoji}</p>
-                      <p>{template.name}</p>
+                      <p>
+                        {getTemplateTranslation(
+                          t,
+                          template.slug,
+                          "name",
+                          template.name,
+                        )}
+                      </p>
                       {template.isNew && (
                         <Badge colorScheme="orange" className="shrink-0">
                           {t("templates.modal.menuHeading.new.tag")}
@@ -183,9 +212,23 @@ export const TemplatesDialog = ({
             <div className="flex flex-col flex-1 gap-4">
               <h2 className="text-2xl">
                 {selectedTemplate.emoji}{" "}
-                <span className="ml-2">{selectedTemplate.name}</span>
+                <span className="ml-2">
+                  {getTemplateTranslation(
+                    t,
+                    selectedTemplate.slug,
+                    "name",
+                    selectedTemplate.name,
+                  )}
+                </span>
               </h2>
-              <p>{selectedTemplate.summary}</p>
+              <p>
+                {getTemplateTranslation(
+                  t,
+                  selectedTemplate.slug,
+                  "summary",
+                  selectedTemplate.summary,
+                )}
+              </p>
             </div>
             <Button onClick={onUseThisTemplateClick} disabled={isLoading}>
               {t("templates.modal.useTemplateButton.label")}

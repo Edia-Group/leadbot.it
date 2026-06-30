@@ -1,7 +1,9 @@
+import { useTranslate } from "@tolgee/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function Page() {
+  const { t } = useTranslate();
   const { query } = useRouter();
 
   useEffect(() => {
@@ -10,5 +12,5 @@ export default function Page() {
     window.close();
   }, [query]);
 
-  return <div>Redirecting...</div>;
+  return <div>{t("pages.oauthRedirect")}</div>;
 }

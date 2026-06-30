@@ -1,5 +1,6 @@
 import { ORPCError } from "@orpc/server";
 import { createId } from "@paralleldrive/cuid2";
+import { getTypebotsLimit } from "@typebot.io/billing/helpers/getTypebotsLimit";
 import { EventType } from "@typebot.io/events/constants";
 import prisma from "@typebot.io/prisma";
 import { Plan } from "@typebot.io/prisma/enum";
@@ -69,6 +70,17 @@ export const handleCreateTypebot = async ({
       },
     });
     if (!existingFolder) typebot.folderId = null;
+  }
+
+  const typebotsLimit = getTypebotsLimit({ plan: workspace.plan });
+  if (typebotsLimit !== "inf") {
+    const existingTypebotsCount = await prisma.typebot.count({
+      where: { workspaceId, isArchived: false },
+    });
+    if (existingTypebotsCount >= typebotsLimit)
+      throw new ORPCError("FORBIDDEN", {
+        message: `Il piano gratuito include ${typebotsLimit} bot. Passa a un piano a pagamento per crearne altri.`,
+      });
   }
 
   const groups = (

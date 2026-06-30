@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useTranslate } from "@tolgee/react";
 import { Button } from "@typebot.io/ui/components/Button";
 import { Label } from "@typebot.io/ui/components/Label";
 import { Radio, RadioGroup } from "@typebot.io/ui/components/RadioGroup";
@@ -12,6 +13,7 @@ import { useWorkspace } from "@/features/workspace/WorkspaceProvider";
 import { orpc } from "@/lib/queryClient";
 
 const Page = () => {
+  const { t } = useTranslate();
   const { push } = useRouter();
   const { typebot } = useTypebot();
   const { workspaces } = useWorkspace();
@@ -36,7 +38,8 @@ const Page = () => {
     <div className="flex w-full justify-center items-center pt-10 h-screen">
       <div className="bg-gray-1 gap-4 max-w-400px mx-auto p-6 rounded-lg border flex flex-col">
         <p>
-          Choose a workspace to duplicate <strong>{typebot?.name}</strong> in:
+          {t("pages.duplicate.chooseWorkspace")}{" "}
+          <strong>{typebot?.name}</strong> {t("pages.duplicate.in")}
         </p>
         <RadioGroup
           className="flex-col"
@@ -63,7 +66,7 @@ const Page = () => {
           disabled={!selectedWorkspaceId || status === "pending"}
           onClick={() => duplicateTypebot(selectedWorkspaceId as string)}
         >
-          Duplicate
+          {t("duplicate")}
         </Button>
       </div>
     </div>

@@ -1,11 +1,6 @@
-import {
-  chatsLimits,
-  prices,
-  seatsLimits,
-} from "@typebot.io/billing/constants";
+import { prices, seatsLimits } from "@typebot.io/billing/constants";
 import { formatPrice } from "@typebot.io/billing/helpers/formatPrice";
 import { Plan } from "@typebot.io/prisma/enum";
-import { MoreInfoTooltip } from "@typebot.io/ui/components/MoreInfoTooltip";
 import { CtaButtonLink } from "@/components/link";
 import { registerUrl } from "@/constants";
 import {
@@ -14,7 +9,6 @@ import {
   PricingCardFooter,
   PricingCardRoot,
 } from "./components/pricing-card";
-import { chatsTooltip } from "./constants";
 
 export const ProPlanCard = ({ children }: { children?: React.ReactNode }) => (
   <PricingCardRoot className="border-violet-400 border-4">
@@ -49,19 +43,10 @@ export const ProPerksList = () => (
       </span>
     </PerkListItem>
     <PerkListItem>
-      <div className="flex flex-col gap-1">
-        <span className="inline-flex">
-          <span className="font-bold">
-            {new Intl.NumberFormat().format(chatsLimits.PRO)} chat
-          </span>
-          /mese
-          <MoreInfoTooltip>{chatsTooltip}</MoreInfoTooltip>
-        </span>
-        <span className="text-xs text-muted-foreground">
-          Chat extra disponibili su richiesta
-        </span>
-      </div>
+      <span className="font-bold">Chat illimitate</span>
     </PerkListItem>
+    <PerkListItem>Knowledge base avanzata (documenti illimitati)</PerkListItem>
+    <PerkListItem>Cervello interno + esterno (team e clienti)</PerkListItem>
     <PerkListItem>Integrazione WhatsApp</PerkListItem>
     <PerkListItem>Domini personalizzati</PerkListItem>
     <PerkListItem>Analisi avanzate</PerkListItem>

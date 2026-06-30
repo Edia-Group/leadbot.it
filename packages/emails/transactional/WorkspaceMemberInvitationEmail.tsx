@@ -12,6 +12,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   container,
@@ -57,9 +58,7 @@ export const WorkspaceMemberInvitationEmail = ({
           </Button>
 
           <Hr style={hr} />
-          <Text style={footerText}>
-            NUCLEO AI - Più clienti, meno telefonate
-          </Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>

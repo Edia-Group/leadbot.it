@@ -14,6 +14,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText, brandName } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   codeStyle,
@@ -32,17 +33,19 @@ interface Props {
 export const VerificationCodeEmail = ({ code }: Props) => (
   <Html>
     <Head />
-    <Preview>Your verification code for Typebot</Preview>
+    <Preview>Il tuo codice di verifica per {brandName}</Preview>
     <Body style={main}>
       <Container style={container}>
         <Logo />
-        <Heading style={heading}>Your verification code for Typebot</Heading>
+        <Heading style={heading}>
+          Il tuo codice di verifica per {brandName}
+        </Heading>
         <code style={codeStyle}>{code}</code>
         <Text style={paragraph}>
-          This code will only be valid for the next hour.
+          Questo codice sarà valido solo per la prossima ora.
         </Text>
         <Hr style={hr} />
-        <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+        <Text style={footerText}>{brandFooterText}</Text>
       </Container>
     </Body>
   </Html>
@@ -61,6 +64,6 @@ export const sendVerificationCodeEmail = async ({
   ComponentProps<typeof VerificationCodeEmail>) =>
   sendEmail({
     to,
-    subject: "Your verification code for Typebot",
+    subject: `Codice di verifica ${brandName}`,
     html: await render(<VerificationCodeEmail {...props} />),
   });

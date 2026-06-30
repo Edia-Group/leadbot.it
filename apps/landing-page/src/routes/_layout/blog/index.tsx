@@ -9,9 +9,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/_layout/blog/")({
   head: () => ({
     meta: createMetaTags({
-      title: "NUCLEO Blog",
+      title: "Blog NUCLEO",
       description:
-        "Learn more about NUCLEO, chatbots, conversational AI and more to help you hack the bot game and grow your business.",
+        "Approfondimenti su NUCLEO, chatbot, AI conversazionale e strategie per generare lead e far crescere la tua azienda.",
       imagePath: "/images/default-og.png",
       path: "/blog",
     }),
@@ -23,10 +23,10 @@ function RouteComponent() {
   return (
     <ContentPageWrapper className="max-w-3xl">
       <div className="flex flex-col gap-6">
-        <h1>Insights and resources on all things chatbot</h1>
+        <h1>Approfondimenti e risorse sui chatbot</h1>
         <p className="text-xl">
-          Learn more about NUCLEO, chatbots, conversational AI and more to help
-          you hack the bot game and grow your business.
+          Scopri di più su NUCLEO, chatbot, AI conversazionale e strategie per
+          generare lead e far crescere la tua azienda.
         </p>
       </div>
       <ol className="flex flex-col gap-6">
@@ -45,7 +45,7 @@ function RouteComponent() {
                   </time>
                   <h3>{post.title}</h3>
                   <p>{post.description}</p>
-                  <p className="font-medium underline">Read more</p>
+                  <p className="font-medium underline">Leggi di più</p>
                 </Card>
               </Link>
             </li>

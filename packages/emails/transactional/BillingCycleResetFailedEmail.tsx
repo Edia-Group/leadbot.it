@@ -14,6 +14,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText, brandSupportEmail } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   container,
@@ -59,12 +60,12 @@ export const BillingCycleResetFailedEmail = ({
             access to your workspace.
           </Text>
 
-          <Button href="mailto:support@typebot.io" style={primaryButton}>
+          <Button href={`mailto:${brandSupportEmail}`} style={primaryButton}>
             Contact support
           </Button>
 
           <Hr style={hr} />
-          <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>

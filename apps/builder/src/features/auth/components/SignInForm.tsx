@@ -127,7 +127,7 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
       </p>
     );
   return (
-    <div className={cn("flex flex-col gap-6 w-[330px]", className)}>
+    <div className={cn("flex w-full flex-col gap-6", className)}>
       {!isMagicCodeSent && (
         <>
           <SocialLoginButtons providers={providers} />
@@ -135,20 +135,22 @@ export const SignInForm = ({ defaultEmail, className }: Props) => {
             <>
               <DividerWithText>{t("auth.orEmailLabel")}</DividerWithText>
               <form
-                className="flex items-center gap-2"
+                className="flex flex-col gap-3"
                 onSubmit={handleEmailSubmit}
               >
                 <Input
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="email@company.com"
+                  placeholder="nome@azienda.it"
                   required
                   value={emailValue}
                   onValueChange={setEmailValue}
+                  className="h-11"
                 />
                 <Button
                   type="submit"
+                  className="h-11 w-full bg-[#2563eb] font-semibold hover:bg-[#1d4ed8]"
                   disabled={
                     ["loading", "authenticated"].includes(status) ||
                     authLoading ||

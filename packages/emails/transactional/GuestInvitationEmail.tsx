@@ -12,6 +12,7 @@ import type { ComponentProps } from "react";
 // biome-ignore lint/correctness/noUnusedImports: Need it for tsx execution
 import React from "react";
 import { sendEmail } from "../helpers/sendEmail";
+import { brandFooterText, botLabel } from "./brand";
 import { Logo } from "./components/Logo";
 import {
   container,
@@ -44,23 +45,23 @@ export const GuestInvitationEmail = ({
         <Container style={container}>
           <Logo />
           <Text style={paragraph}>
-            You have been invited by {hostEmail} to collaborate on his typebot{" "}
+            Sei stato invitato da {hostEmail} a collaborare sul {botLabel}{" "}
             <strong>{typebotName}</strong>.
             <br />
             <br />
-            From now on you will see this typebot in your dashboard under his
-            workspace &quot;{workspaceName}&quot; 👍
+            Da ora vedrai questo {botLabel} nella dashboard del workspace
+            &quot;{workspaceName}&quot; 👍
             <br />
             <br />
-            Make sure to log in as <i>{guestEmail}</i>.
+            Accedi con <i>{guestEmail}</i>.
           </Text>
 
           <Button href={url} style={primaryButton}>
-            Go to typebot
+            Vai alla piattaforma
           </Button>
 
           <Hr style={hr} />
-          <Text style={footerText}>Typebot - Build faster, Chat smarter</Text>
+          <Text style={footerText}>{brandFooterText}</Text>
         </Container>
       </Body>
     </Html>
@@ -69,10 +70,10 @@ export const GuestInvitationEmail = ({
 
 GuestInvitationEmail.PreviewProps = {
   workspaceName: "My Workspace",
-  typebotName: "My Typebot",
-  url: "https://typebot.io",
-  hostEmail: "host@typebot.io",
-  guestEmail: "guest@typebot.io",
+  typebotName: "Assistente clienti",
+  url: "https://app.nucleoai.it",
+  hostEmail: "host@nucleoai.it",
+  guestEmail: "guest@nucleoai.it",
 } as Props;
 
 export default GuestInvitationEmail;

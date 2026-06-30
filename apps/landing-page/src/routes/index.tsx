@@ -5,9 +5,9 @@ import { createMetaTags } from "@/lib/createMetaTags";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: createMetaTags({
-      title: "NUCLEO AI — Sistema Operativo AI per PMI italiane",
+      title: "NUCLEO AI — Chatbot per PMI italiane, con o senza AI",
       description:
-        "NUCLEO AI conosce la tua azienda e agisce nei tuoi processi: risponde coi tuoi documenti, prenota appuntamenti, automatizza preventivi e notifiche. Chatbot, RAG, workflow e integrazioni gestionali. Dati in EU, chiavi in mano.",
+        "Crea chatbot su WhatsApp e sito web in pochi minuti. Flussi guidati senza AI, intelligenza artificiale sui tuoi documenti, o entrambi. No-code, multicanale, GDPR. Inizia gratis.",
       imagePath: "/images/default-og.png",
       path: "",
     }),

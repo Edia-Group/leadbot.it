@@ -7,15 +7,13 @@ import {
 } from "@tanstack/react-router";
 import { z } from "zod";
 import css from "@/assets/globals.css?url";
-import { CookieConsentBot } from "@/components/CookieConsentBot";
+import { CookieBanner } from "@/components/CookieBanner";
 import { Footer } from "@/components/footer/Footer";
 import { Header } from "@/components/Header";
 import { NotFound } from "@/components/NotFound";
 import { setCookie } from "@/helpers/setCookie";
 import { useCookieConsentStatus } from "@/hooks/useIsCookieConsentNeeded";
 import { useTrackPageViewQuery } from "@/hooks/useTrackPageViewQuery";
-
-const HERO_ANIMATION_DELAY = 1800;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -73,7 +71,7 @@ function RootComponent() {
   });
 
   return (
-    <html lang="en">
+    <html lang="it">
       <head>
         <HeadContent />
       </head>
@@ -87,14 +85,18 @@ function RootComponent() {
             />
           </div>
           <Outlet />
-          <CookieConsentBot
-            isOpen={cookieConsentStatus === "need-consent"}
-            openDelay={HERO_ANIMATION_DELAY}
-            onSubmit={(response) => {
-              setCookie(response);
-              setCookieConsentStatus(response);
-            }}
-          />
+          {cookieConsentStatus === "need-consent" && (
+            <CookieBanner
+              onAccept={() => {
+                setCookie("accepted");
+                setCookieConsentStatus("accepted");
+              }}
+              onDecline={() => {
+                setCookie("declined");
+                setCookieConsentStatus("declined");
+              }}
+            />
+          )}
           <Footer />
         </div>
         <Scripts />
